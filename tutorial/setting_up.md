@@ -1,34 +1,34 @@
-# Setting Up
+# 设置环境
 
-Initialize a [Cargo](https://doc.rust-lang.org/cargo/guide/) project.
+初始化一个 [Cargo](https://doc.rust-lang.org/cargo/guide/) 项目。
 
 ```sh
 cargo new my_project
 ```
 
-where `my_project` is the name of the project.
+这里的 `my_project` 是你的项目名称。
 
-Add [Iced](https://iced.rs/) to the project dependencies.
+将 [Iced](https://iced.rs/) 添加到项目的依赖中。
 
 ```sh
 cd my_project
 cargo add iced
 ```
 
-You should see the dependency in the end of `Cargo.toml` file.
+你应该能在 `Cargo.toml` 文件的末尾看到依赖项。
 
 ```toml
 [dependencies]
 iced = "0.12.1"
 ```
 
-Note: If you encounter `WGPU Error`, you can disable `wgpu` in `Cargo.toml` file.
+注意：如果你遇到了 `WGPU Error`，你可以在 `Cargo.toml` 文件中禁用 `wgpu`。
 
 ```toml
 [dependencies]
 iced = { version = "0.12.1", default-features = false }
 ```
 
-:arrow_right:  Next: [First App - Hello World!](./first_app.md)
+:arrow_right: 下一步：[第一个应用 - Hello World!](./first_app.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
