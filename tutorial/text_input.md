@@ -1,12 +1,12 @@
 # TextInput
 
-The [TextInput](https://docs.rs/iced/0.12.1/iced/widget/struct.TextInput.html) widget let users to input texts.
-It has two methods of constructions.
-If the [on_input](https://docs.rs/iced/0.12.1/iced/widget/struct.TextInput.html#method.on_input) method is set, it is enabled, and is disabled otherwise.
-It supports reactions to pasting texts or keyboard submissions.
-It is able to change fonts and text sizes.
-We can add padding around the text inside.
-We can also add an optional icon.
+[TextInput](https://docs.rs/iced/0.12.1/iced/widget/struct.TextInput.html) 组件允许用户输入文本。
+它有两种构造方式。
+如果设置了 [on_input](https://docs.rs/iced/0.12.1/iced/widget/struct.TextInput.html#method.on_input) 方法，则文本输入框处于启用状态，否则处于禁用状态。
+它支持对粘贴文本或键盘提交的反应。
+它能够改变字体和文本大小。
+我们可以在内部文本周围添加填充。
+我们还可以添加一个可选的图标。
 
 ```rust
 use iced::{
@@ -121,6 +121,6 @@ impl Sandbox for MyApp {
 
 ![TextInput](./pic/text_input.png)
 
-:arrow_right:  Next: [Checkbox](./checkbox.md)
+:arrow_right: 下一步：[Checkbox](./checkbox.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
