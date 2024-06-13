@@ -1,6 +1,6 @@
-# Adding Widgets
+# 添加控件
 
-Use [column!](https://docs.rs/iced/0.12.1/iced/widget/macro.column.html) and [row!](https://docs.rs/iced/0.12.1/iced/widget/macro.row.html) to group multiple widgets such as [text](https://docs.rs/iced/0.12.1/iced/widget/fn.text.html) and [button](https://docs.rs/iced/0.12.1/iced/widget/fn.button.html).
+使用 [column!](https://docs.rs/iced/0.12.1/iced/widget/macro.column.html) 和 [row!](https://docs.rs/iced/0.12.1/iced/widget/macro.row.html) 宏来组合多个控件，比如 [text](https://docs.rs/iced/0.12.1/iced/widget/fn.text.html) 和 [button](https://docs.rs/iced/0.12.1/iced/widget/fn.button.html)。
 
 ```rust
 use iced::{
@@ -39,8 +39,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Adding widgets](./pic/adding_widgets.png)
+![添加控件](./pic/adding_widgets.png)
 
-:arrow_right:  Next: [Changing Displaying Content](./changing_displaying_content.md)
+:arrow_right: 下一步：[更改显示内容](./changing_displaying_content.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
