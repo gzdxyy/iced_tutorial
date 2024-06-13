@@ -1,7 +1,7 @@
-# First App - Hello World!
+# 第一个应用 - Hello World!
 
-We need a struct to implement [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html), and call its [run](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#method.run) method from `main`.
-All widgets should be placed inside the [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) method.
+我们需要一个结构体来实现 [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) 并从 `main` 函数中调用它的 [run](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#method.run) 方法。
+所有的控件应该放置在 [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) 方法内。
 
 ```rust
 use iced::{Sandbox, Settings};
@@ -31,8 +31,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![First app](./pic/first_app.png)
+![第一个应用](./pic/first_app.png)
 
-:arrow_right:  Next: [Explanation of Sandbox Trait](./explanation_of_sandbox_trait.md)
+:arrow_right: 下一步：[Sandbox Trait 说明](./explanation_of_sandbox_trait.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
