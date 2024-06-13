@@ -1,9 +1,9 @@
-# Button
+# 按钮
 
-The [Button](https://docs.rs/iced/0.12.1/iced/widget/button/struct.Button.html) widget supports reactions to pressing/touching events.
-It has two methods of constructions.
-If the method [on_press](https://docs.rs/iced/0.12.1/iced/widget/button/struct.Button.html#method.on_press) is set, the button is enabled, and is disabled otherwise.
-We can also set padding around the text of the button.
+[按钮](https://docs.rs/iced/0.12.1/iced/widget/button/struct.Button.html) 组件支持对按下/触摸事件的反应。
+它有两种构造方法。
+如果设置了 [on_press](https://docs.rs/iced/0.12.1/iced/widget/button/struct.Button.html#method.on_press) 方法，则按钮处于启用状态，否则处于禁用状态。
+我们还可以为按钮文本周围设置填充。
 
 ```rust
 use iced::{
@@ -47,8 +47,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Button](./pic/button.png)
+![按钮](./pic/button.png)
 
-:arrow_right:  Next: [TextInput](./text_input.md)
+:arrow_right: 下一步：[文本输入](./text_input.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
