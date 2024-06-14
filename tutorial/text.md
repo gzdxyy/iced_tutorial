@@ -1,9 +1,9 @@
 # Text
 
-The [Text](https://docs.rs/iced/0.12.1/iced/widget/type.Text.html) widget is able to display texts.
-It has three methods of constructions.
-It is able to change the font, the size of the font, and display special characters.
-The text inside the widget can be horizontally or vertically centered.
+[Text](https://docs.rs/iced/0.12.1/iced/widget/type.Text.html) 组件用于显示文本。
+它有三种构造方法。
+它可以改变字体、字体大小，并显示特殊字符。
+组件内的文本可以水平或垂直居中显示。
 
 ```rust
 use iced::{
@@ -37,10 +37,11 @@ impl Sandbox for MyApp {
             "Construct from &str",
             text("Construct from function"),
             Text::new("Construct from struct"),
-            text("Different font").font(Font {
-                family: Family::Fantasy,
-                ..Font::DEFAULT
-            }),
+            text("Different font")
+                .font(Font {
+                    family: Family::Fantasy,
+                    ..Font::DEFAULT
+                }),
             text("Larger text").size(24),
             text("Special character 😊").shaping(Shaping::Advanced),
             text("Center")
@@ -55,8 +56,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Text](./pic/text.png)
+![文本](./pic/text.png)
 
-:arrow_right:  Next: [Button](./button.md)
+:arrow_right: 下一步：[按钮](./button.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
