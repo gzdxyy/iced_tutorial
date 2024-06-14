@@ -1,7 +1,7 @@
-# ProgressBar
+# 进度条
 
-The [ProgressBar](https://docs.rs/iced/0.12.1/iced/widget/progress_bar/struct.ProgressBar.html) widget represents a value in a given range.
-It has two methods of constructions.
+[ProgressBar](https://docs.rs/iced/0.12.1/iced/widget/progress_bar/struct.ProgressBar.html) 组件表示给定范围内的值。
+它有两种构造方法。
 
 ```rust
 use iced::{
@@ -40,8 +40,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![ProgressBar](./pic/progressbar.png)
+![进度条](./pic/progressbar.png)
 
-:arrow_right:  Next: [Tooltip](./tooltip.md)
+:arrow_right: 下一步：[工具提示](./tooltip.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
