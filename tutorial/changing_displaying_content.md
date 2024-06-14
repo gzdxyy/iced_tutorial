@@ -1,11 +1,11 @@
-# Changing Displaying Content
+# 更改显示内容
 
-To change the content in [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) dynamically, we can do the following:
+要动态更改 [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) 中的内容，我们可以执行以下操作：
 
-* Add some fields (e.g., `counter`) to the main struct `MyApp`.
-* Display the fields in [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) (e.g., `text(self.counter)`).
-* Produce some messages in [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) (e.g., `button(...).on_press(MyAppMessage::ButtonPressed)`).
-* Update the fields when messages are received in [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) (e.g., `self.counter += 1`).
+* 在主结构体 `MyApp` 中添加一些字段（例如 `counter`）。
+* 在 [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) 中显示这些字段（例如 `text(self.counter)`）。
+* 在 [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) 中产生一些消息（例如 `button(...).on_press(MyAppMessage::ButtonPressed)`）。
+* 当接收到消息时，在 [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) 中更新字段（例如 `self.counter += 1`）。
 
 ```rust
 use iced::{
@@ -45,7 +45,7 @@ impl Sandbox for MyApp {
 
     fn view(&self) -> iced::Element<Self::Message> {
         column![
-            text(self.counter),
+            text(self.counter.to_string()),
             button("Increase").on_press(MyAppMessage::ButtonPressed),
         ]
         .into()
@@ -53,8 +53,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Producing and receiving messages](./pic/changing_displaying_content.png)
+![产生和接收消息](./pic/changing_displaying_content.png)
 
-:arrow_right:  Next: [Text](./text.md)
+:arrow_right: 下一步：[文本](./text.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
