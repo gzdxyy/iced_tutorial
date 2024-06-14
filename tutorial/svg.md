@@ -1,28 +1,28 @@
-# Svg
+# SVG
 
-The [Svg](https://docs.rs/iced/0.12.1/iced/widget/svg/struct.Svg.html) widget is able to display an [SVG](https://en.wikipedia.org/wiki/SVG) image.
-It has two methods of constructions.
-We can set how to fit the image content into the widget bounds.
+[Svg](https://docs.rs/iced/0.12.1/iced/widget/svg/struct.Svg.html) 组件能够显示一个 [SVG](https://en.wikipedia.org/wiki/SVG) 图像。
+它有两种构造方法。
+我们可以设置如何将图像内容适应到组件边界内。
 
-To use the widget, we have to enable the [svg](https://docs.rs/crate/iced/0.12.1/features#svg) feature.
-The `Cargo.toml` dependencies should look like this:
+要使用这个组件，我们必须启用 [svg](https://docs.rs/crate/iced/0.12.1/features#svg) 功能。
+`Cargo.toml` 依赖应该如下所示：
 
 ```toml
 [dependencies]
 iced = { version = "0.12.1", features = ["svg"] }
 ```
 
-Let's add an [SVG](https://en.wikipedia.org/wiki/SVG) image named `pic.svg` into the project root directory, i.e., the image has the path `my_project/pic.svg` where `my_project` is the name of our project.
-The file `pic.svg` contains the following content:
+让我们将一个名为 `pic.svg` 的 [SVG](https://en.wikipedia.org/wiki/SVG) 图像添加到项目根目录中，即图像的路径为 `my_project/pic.svg`，其中 `my_project` 是我们项目的名称。
+文件 `pic.svg` 包含以下内容：
 
 ```svg
-<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg"> 
     <rect width="400" height="300" style="fill:rgb(100,130,160)"/>
     <circle cx="200" cy="150" r="100" style="fill:rgb(180,210,240)"/>
 </svg>
 ```
 
-Our example is as follows:
+我们的示例如下：
 
 ```rust
 use iced::{
@@ -63,8 +63,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Svg](./pic/svg.png)
+![SVG](./pic/svg.png)
 
-:arrow_right:  Next: [Width And Height](./width_and_height.md)
+:arrow_right: 下一步：[宽度和高度](./width_and_height.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
