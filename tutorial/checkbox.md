@@ -1,11 +1,11 @@
-# Checkbox
+# 复选框
 
-The [Checkbox](https://docs.rs/iced/0.12.1/iced/widget/checkbox/struct.Checkbox.html) widget represents a boolean value.
-It has two methods of constructions.
-If the [on_toggle](https://docs.rs/iced/0.12.1/iced/widget/struct.Checkbox.html#method.on_toggle) method is set, it is enabled, and is disabled otherwise.
-It supports reactions to clicking and touching.
-It is able to change styles of the box and the text.
-It can also change the space between them.
+[Checkbox](https://docs.rs/iced/0.12.1/iced/widget/checkbox/struct.Checkbox.html) 组件代表一个布尔值。
+它有两种构造方法。
+如果设置了 [on_toggle](https://docs.rs/iced/0.12.1/iced/widget/struct.Checkbox.html#method.on_toggle) 方法，则复选框处于启用状态，否则处于禁用状态。
+它支持对点击和触摸的反应。
+它可以改变框和文本的样式。
+它还可以改变它们之间的间距。
 
 ```rust
 use iced::{
@@ -96,8 +96,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Checkbox](./pic/checkbox.png)
+![复选框](./pic/checkbox.png)
 
-:arrow_right:  Next: [Toggler](./toggler.md)
+:arrow_right: 下一步：[切换器](./toggler.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
