@@ -1,18 +1,18 @@
-# Image
+# 图像
 
-The [Image](https://docs.rs/iced/0.12.1/iced/widget/image/struct.Image.html) widget is able to display an image.
-It has two methods of constructions.
-We can set how to fit the image content into the widget bounds.
+[Image](https://docs.rs/iced/0.12.1/iced/widget/image/struct.Image.html) 组件能够显示一个图像。
+它有两种构造方法。
+我们可以设置如何将图像内容适应到组件边界内。
 
-To use the widget, we have to enable the [image](https://docs.rs/crate/iced/0.12.1/features#image) feature.
-The `Cargo.toml` dependencies should look like this:
+要使用该组件，我们必须启用 [image](https://docs.rs/crate/iced/0.12.1/features#image) 特性。
+`Cargo.toml` 依赖应该如下所示：
 
 ```toml
 [dependencies]
 iced = { version = "0.12.1", features = ["image"] }
 ```
 
-Assume we have an image named `ferris.png` in the project root directory, i.e., the image has the path `my_project/ferris.png` where `my_project` is the name of our project.
+假设我们在项目根目录下有一个名为 `ferris.png` 的图像，即图像的路径为 `my_project/ferris.png`，其中 `my_project` 是我们项目的名称。
 
 ```rust
 use iced::{
@@ -41,11 +41,11 @@ impl Sandbox for MyApp {
 
     fn view(&self) -> iced::Element<Self::Message> {
         column![
-            text("Construct from struct"),
+            text("通过结构体构造"),
             Image::new("ferris.png"),
-            text("Construct from function"),
+            text("通过函数构造"),
             image("ferris.png"),
-            text("Different content fit"),
+            text("不同的内容适应"),
             image("ferris.png").content_fit(ContentFit::Cover),
         ]
         .into()
@@ -53,8 +53,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Image](./pic/image.png)
+![图像](./pic/image.png)
 
-:arrow_right:  Next: [Svg](./svg.md)
+:arrow_right: 下一步：[SVG](./svg.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
