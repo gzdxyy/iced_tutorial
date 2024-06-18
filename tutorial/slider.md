@@ -1,10 +1,10 @@
-# Slider And VerticalSlider
+# 滑块和垂直滑块
 
-The [Slider](https://docs.rs/iced/0.12.1/iced/widget/slider/struct.Slider.html) widget represents a chosen value in a given range.
-It has two methods of constructions.
-It supports reactions to mouse pressing/releasing and touching.
-The selected value can be snapped to a given step.
-The widget can be set to be either horizontal or vertical.
+[Slider](https://docs.rs/iced/0.12.1/iced/widget/slider/struct.Slider.html) 组件表示在给定范围内选择的值。
+它有两种构造方法。
+它支持对鼠标按下/释放和触摸的反应。
+所选值可以对齐到给定的步长。
+该组件可以设置为水平或垂直。
 
 ```rust
 use iced::{
@@ -96,8 +96,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Slider](./pic/slider.png)
+![滑块](./pic/slider.png)
 
-:arrow_right:  Next: [ProgressBar](./progressbar.md)
+:arrow_right: 下一步：[进度条](./progressbar.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
