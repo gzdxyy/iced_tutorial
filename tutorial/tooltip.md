@@ -1,11 +1,11 @@
 # Tooltip
 
-The [Tooltip](https://docs.rs/iced/0.12.1/iced/widget/tooltip/struct.Tooltip.html) widget displays a text when the mouse is over a specified widget.
-It has two methods of constructions.
-It is able to change styles of the text.
-We can add padding around the text inside.
-We can also change the space between the tooltip and the target widget.
-If the tooltip is allowed to be out of the window, the parts outside are clipped.
+[Tooltip](https://docs.rs/iced/0.12.1/iced/widget/tooltip/struct.Tooltip.html) 组件在鼠标悬停在指定控件上时显示文本。
+它有两种构造方法。
+它能够改变文本的样式。
+我们可以在内部文本周围添加填充。
+我们还可以改变工具提示与目标控件之间的间距。
+如果允许工具提示超出窗口，那么外面的部分将被剪切。
 
 ```rust
 use iced::{
@@ -75,6 +75,6 @@ impl Sandbox for MyApp {
 
 ![Tooltip](./pic/tooltip.png)
 
-:arrow_right:  Next: [Rule](./rule.md)
+:arrow_right: 下一步：[分隔线](./rule.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
