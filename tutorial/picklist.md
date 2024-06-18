@@ -1,12 +1,12 @@
 # PickList
 
-The [PickList](https://docs.rs/iced/0.12.1/iced/widget/pick_list/struct.PickList.html) widget represents a choice among multiple values.
-It has two methods of constructions.
-It supports reactions to option selections and menu opening/closing.
-A placeholder can be set when options are not selected yet.
-It is able to change styles of the text.
-We can add padding around the text inside.
-We can also change the icon of the handle.
+[PickList](https://docs.rs/iced/0.12.1/iced/widget/pick_list/struct.PickList.html) 组件代表在多个值中的选择。
+它有两种构造方法。
+它支持对选项选择以及菜单打开/关闭的反应。
+当尚未选择选项时，可以设置一个占位符。
+它能够改变文本的样式。
+我们可以在内部文本周围添加填充。
+我们还可以改变手柄的图标。
 
 ```rust
 use iced::{
@@ -60,23 +60,22 @@ impl Sandbox for MyApp {
     fn view(&self) -> iced::Element<Self::Message> {
         column![
             PickList::new(
-                vec!["Construct from struct"],
-                Some("Construct from struct"),
+                vec!["Construct from struct"], 
+                Some("Construct from struct"), 
                 |_| MyAppMessage::DoNothing
             ),
             pick_list(
-                vec!["Construct from function"],
-                Some("Construct from function"),
+                vec!["Construct from function"], 
+                Some("Construct from function"), 
                 |_| MyAppMessage::DoNothing
             ),
             pick_list(
                 ["Functional pick list", "Other choices 1", "Other choices 2"]
-                    .map(|s| s.to_string())
-                    .to_vec(),
+                    .iter().map(|s| s.to_string()).collect(),
                 self.pick_list_3.clone(),
                 |s| MyAppMessage::Update3(s)
             ),
-            pick_list(vec!["A", "B", "C"], None::<&str>, |_| {
+            pick_list(vec!["A", "B", "C"], None, |_| {
                 MyAppMessage::DoNothing
             })
             .placeholder("Placeholder"),
@@ -92,8 +91,8 @@ impl Sandbox for MyApp {
             })
             .text_size(24),
             pick_list(
-                vec!["Special character 😊"],
-                Some("Special character 😊"),
+                vec!["Special character 😊"], 
+                Some("Special character 😊"), 
                 |_| MyAppMessage::DoNothing
             )
             .text_shaping(Shaping::Advanced),
@@ -129,6 +128,6 @@ impl Sandbox for MyApp {
 
 ![PickList](./pic/picklist.png)
 
-:arrow_right:  Next: [ComboBox](./combobox.md)
+:arrow_right: 下一步：[下拉框](./combobox.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
