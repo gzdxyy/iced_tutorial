@@ -1,13 +1,13 @@
-# Width And Height
+# 宽度和高度
 
-Most widgets have the `width` and `height` methods to control their sizes.
-The methods accept a parameter [Length](https://docs.rs/iced/0.12.1/iced/latest/iced/enum.Length.html).
-There are four types of [Length](https://docs.rs/iced/0.12.1/iced/latest/iced/enum.Length.html):
+大多数控件都有 `width` 和 `height` 方法来控制它们的大小。
+这些方法接受一个参数 [Length](https://docs.rs/iced/0.12.1/iced/latest/iced/enum.Length.html)。
+[Length](https://docs.rs/iced/0.12.1/iced/latest/iced/enum.Length.html) 有四种类型：
 
-* [Shrink](https://docs.rs/iced/0.12.1/iced/latest/iced/enum.Length.html#variant.Shrink): occupy the least space.
-* [Fill](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.Fill): occupy all the rest of space.
-* [FillPortion](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.FillPortion): occupy the space relative to other widgets with [FillPortion](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.FillPortion).
-* [Fixed](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.Fixed): occupy a fixed space.
+* [Shrink](https://docs.rs/iced/0.12.1/iced/latest/iced/enum.Length.html#variant.Shrink)：占用最少的空间。
+* [Fill](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.Fill)：占用所有剩余的空间。
+* [FillPortion](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.FillPortion)：与具有 [FillPortion](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.FillPortion) 的其他控件相对地占用空间。
+* [Fixed](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.Fixed)：占用固定大小的空间。
 
 ```rust
 use iced::{
@@ -52,8 +52,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Width And Height](./pic/width_and_height.png)
+![宽度和高度](./pic/width_and_height.png)
 
-:arrow_right:  Next: [Column](./column.md)
+:arrow_right: 下一步：[列](./column.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
