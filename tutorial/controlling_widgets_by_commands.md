@@ -1,11 +1,12 @@
-# Controlling Widgets By Commands
 
-We can use [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html) to control widgets.
-Some widgets have [functions](https://doc.rust-lang.org/stable/book/ch03-03-how-functions-work.html) to change their behavior.
-These [functions](https://doc.rust-lang.org/stable/book/ch03-03-how-functions-work.html) are located at their respective modules.
-For example, [focus](https://docs.rs/iced/0.12.1/iced/widget/text_input/fn.focus.html) is a function in [text_input](https://docs.rs/iced/0.12.1/iced/widget/text_input/index.html) module that makes a [TextInput](https://docs.rs/iced/0.12.1/iced/widget/text_input/struct.TextInput.html) gaining the focus.
-This function takes a parameter [text_input::Id](https://docs.rs/iced/0.12.1/iced/widget/text_input/struct.Id.html), which can be specified by [id](https://docs.rs/iced/0.12.1/iced/widget/text_input/struct.TextInput.html#method.id) method of [TextInput](https://docs.rs/iced/0.12.1/iced/widget/text_input/struct.TextInput.html).
-The function returns a [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html) and we can return the [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html) in [update](https://docs.rs/iced/0.12.1/iced.rs/iced/application/trait.Application.html#tymethod.update) or [new](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.new) methods of [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html).
+# 通过命令控制控件
+
+我们可以使用 [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html) 来控制控件。
+一些控件有 [函数](https://doc.rust-lang.org/stable/book/ch03-03-how-functions-work.html) 来改变它们的行为。
+这些 [函数](https://doc.rust-lang.org/stable/book/ch03-03-how-functions-work.html) 位于它们各自的模块中。
+例如，[focus](https://docs.rs/iced/0.12.1/iced/widget/text_input/fn.focus.html) 是 [text_input](https://docs.rs/iced/0.12.1/iced/widget/text_input/index.html) 模块中的一个函数，它使 [TextInput](https://docs.rs/iced/0.12.1/iced/widget/text_input/struct.TextInput.html) 获得焦点。
+这个函数接受一个参数 [text_input::Id](https://docs.rs/iced/0.12.1/iced/widget/text_input/struct.Id.html)，可以通过 [TextInput](https://docs.rs/iced/0.12.1/iced/widget/text_input/struct.TextInput.html) 的 [id](https://docs.rs/iced/0.12.1/iced/widget/text_input/struct.TextInput.html#method.id) 方法指定。
+该函数返回一个 [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html)，我们可以在 [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html) 的 [update](https://docs.rs/iced/0.12.1/iced.rs/iced/application/trait.Application.html#tymethod.update) 或 [new](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.new) 方法中返回这个 [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html)。
 
 ```rust
 use iced::{
@@ -69,8 +70,8 @@ impl Application for MyApp {
 }
 ```
 
-![Controlling widgets by commands](./pic/controlling_widgets_by_commands.png)
+![通过命令控制控件](./pic/controlling_widgets_by_commands.png)
 
-:arrow_right:  Next: [Batch Commands](./batch_commands.md)
+:arrow_right: 下一步：[批量命令](./batch_commands.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
