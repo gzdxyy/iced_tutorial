@@ -1,10 +1,10 @@
-# Batch Subscriptions
 
-This tutorial follows from the previous two tutorials ([keyboard events](./producing_messages_by_keyboard_events.md) and [timers](./producing_messages_by_timers.md)).
-We combine the two [Subscriptions](https://docs.rs/iced/0.12.1/iced/subscription/struct.Subscription.html) of keyboard events and timers.
-This is done by [Subscription::batch](https://docs.rs/iced/0.12.1/iced/subscription/struct.Subscription.html#method.batch) function.
+# 批量订阅
 
-In the following app, press the space key to start or stop the timer.
+本教程是继前两个教程（[键盘事件](./producing_messages_by_keyboard_events.md) 和 [计时器](./producing_messages_by_timers.md)）之后的延续。
+我们通过 [Subscription::batch](https://docs.rs/iced/0.12.1/iced/subscription/struct.Subscription.html#method.batch) 函数结合键盘事件和计时器的两个 [Subscriptions](https://docs.rs/iced/0.12.1/iced/subscription/struct.Subscription.html)。
+
+在以下应用程序中，按空格键可以启动或停止计时器。
 
 ```rust
 use iced::{
@@ -60,7 +60,7 @@ impl Application for MyApp {
     }
 
     fn view(&self) -> iced::Element<Self::Message> {
-        text(self.seconds).into()
+        text(self.seconds.to_string()).into()
     }
 
     fn subscription(&self) -> iced::Subscription<Self::Message> {
@@ -87,8 +87,8 @@ impl Application for MyApp {
 }
 ```
 
-![Batch subscriptions](./pic/batch_subscriptions.png)
+![批量订阅](./pic/batch_subscriptions.png)
 
-:arrow_right:  Next: [Drawing Shapes](./drawing_shapes.md)
+:arrow_right: 下一步：[绘制形状](./drawing_shapes.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
