@@ -1,9 +1,10 @@
+
 # Scrollable
 
-When there are too many widgets, they may go beyond the boundary of the window.
-[Scrollable](https://docs.rs/iced/0.12.1/iced/widget/scrollable/struct.Scrollable.html) provides an infinite space that widgets can be navigated by scroll bars.
-The scroll bars can be vertical, horizontal or both.
-When the scroll bars are changed, we can also receive their scroll positions and update other widgets.
+当控件数量过多时，它们可能会超出窗口的边界。
+[Scrollable](https://docs.rs/iced/0.12.1/iced/widget/scrollable/struct.Scrollable.html) 提供了一个无限空间，控件可以通过滚动条进行导航。
+滚动条可以是垂直的、水平的或两者兼有。
+当滚动条发生变化时，我们还可以接收它们滚动位置并更新其他控件。
 
 ```rust
 use iced::{
@@ -49,14 +50,14 @@ impl Sandbox for MyApp {
 
     fn view(&self) -> iced::Element<Self::Message> {
         let long_vertical_texts =
-            column((0..10).map(|i| text(format!("{} vertical scrollable", i + 1)).into()));
+            column((0..10).map(|i| text(format!("{} 垂直滚动", i + 1)).into()));
         let long_horizontal_texts =
-            row((0..10).map(|i| text(format!("{} horizontal scrollable  ", i + 1)).into()));
+            row((0..10).map(|i| text(format!("{} 水平滚动", i + 1)).into()));
         let long_both_texts = column(
-            (0..10).map(|i| text(format!("{} vertical and horizontal scrollable", i + 1)).into()),
+            (0..10).map(|i| text(format!("{} 垂直和水平滚动", i + 1)).into()),
         );
         let long_both_texts_2 = column(
-            (0..10).map(|i| text(format!("{} vertical and horizontal scrollable", i + 1)).into()),
+            (0..10).map(|i| text(format!("{} 垂直和水平滚动", i + 1)).into()),
         );
 
         column![
@@ -93,10 +94,10 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Scrollable](./pic/scrollable.png)
+![可滚动](./pic/scrollable.png)
 
-Instead of using [Scrollable::new](https://docs.rs/iced/0.12.1/iced/widget/scrollable/struct.Scrollable.html#method.new), we can also use the [scrollable](https://docs.rs/iced/0.12.1/iced/widget/fn.scrollable.html) function.
+除了使用 [Scrollable::new](https://docs.rs/iced/0.12.1/iced/widget/scrollable/struct.Scrollable.html#method.new)，我们还可以使用 [scrollable](https://docs.rs/iced/0.12.1/iced/widget/fn.scrollable.html) 函数。
 
-:arrow_right:  Next: [Changing Themes](./changing_themes.md)
+:arrow_right: 下一步：[更改主题](./changing_themes.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
