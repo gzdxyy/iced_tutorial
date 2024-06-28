@@ -1,8 +1,9 @@
+
 # Space
 
-[Space](https://docs.rs/iced/0.12.1/iced/widget/space/struct.Space.html) is a convenient widget that helps us laying out our widgets.
-It is an empty widget that occupies a space.
-It has several constructions to help us allocating spaces horizontally, vertically or both.
+[Space](https://docs.rs/iced/0.12.1/iced/widget/space/struct.Space.html) 是一个方便的控件，帮助我们进行控件布局。
+它是一个占据空间的空控件。
+它有几种构造方法，帮助我们在水平、垂直或两者方向上分配空间。
 
 ```rust
 use iced::{
@@ -32,37 +33,37 @@ impl Sandbox for MyApp {
     fn view(&self) -> iced::Element<Self::Message> {
         column![
             row![
-                button("Horizontal space 1A"),
+                button("水平空白 1A"),
                 Space::with_width(50),
-                button("Horizontal space 1B"),
+                button("水平空白 1B"),
             ],
             row![
-                button("Horizontal space 2A"),
+                button("水平空白 2A"),
                 Space::with_width(Length::Fill),
-                button("Horizontal space 2B"),
+                button("水平空白 2B"),
             ],
             row![
-                button("Horizontal space 3A"),
+                button("水平空白 3A"),
                 horizontal_space(),
-                button("Horizontal space 3B"),
+                button("水平空白 3B"),
             ],
-            button("Vertical space 1A"),
+            button("垂直空白 1A"),
             Space::with_height(50),
-            button("Vertical space 1B"),
+            button("垂直空白 1B"),
             Space::with_height(Length::Fill),
-            button("Vertical space 2A"),
+            button("垂直空白 2A"),
             vertical_space(),
-            button("Vertical space 2B"),
-            button("Diagonal space A"),
-            row![Space::new(50, 50), button("Diagonal space B"),].align_items(Alignment::End)
+            button("垂直空白 2B"),
+            button("对角线空白 A"),
+            row![Space::new(50, 50), button("对角线空白 B")].align_items(Alignment::End)
         ]
         .into()
     }
 }
 ```
 
-![Space](./pic/space.png)
+![空白](./pic/space.png)
 
-:arrow_right:  Next: [Container](./container.md)
+:arrow_right: 下一步：[容器](./container.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
