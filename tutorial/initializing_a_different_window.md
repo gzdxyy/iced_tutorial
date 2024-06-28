@@ -1,7 +1,8 @@
-# Initializing A Different Window
 
-We can use [window::Settings](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html) to change the properties of the window (such as [position](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html#structfield.position) and [size](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html#structfield.size)) when we call [run](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#method.run) of a [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) or [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html).
-Developers might be interested in reading the document of [window::Settings](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html) for other properties.
+# 初始化不同的窗口
+
+我们可以使用 [window::Settings](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html) 在调用 [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) 或 [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html) 的 [run](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#method.run) 时更改窗口的属性（例如 [position](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html#structfield.position) 和 [size](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html#structfield.size)）。
+开发人员可能对阅读 [window::Settings](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html) 文档中的其他属性感兴趣。
 
 ```rust
 use iced::{window, Point, Sandbox, Settings, Size};
@@ -41,8 +42,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Initializing a different window](./pic/initializing_a_different_window.png)
+![初始化不同的窗口](./pic/initializing_a_different_window.png)
 
-:arrow_right:  Next: [Changing The Window Dynamically](./changing_the_window_dynamically.md)
+:arrow_right: 下一步：[动态更改窗口](./changing_the_window_dynamically.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
