@@ -1,7 +1,8 @@
-# Passing Parameters Across Pages
 
-This tutorial follows the [previous tutorial](./memoryless_pages.md).
-We use the same `Page` trait and `MyApp` struct.
+# 跨页面传递参数
+
+本教程是在 [上一个教程](./memoryless_pages.md) 的基础上进行的。
+我们使用相同的 `Page` trait 和 `MyApp` 结构体。
 
 ```rust
 use iced::{
@@ -54,8 +55,8 @@ impl Sandbox for MyApp {
 }
 ```
 
-For `PageA` (the login form), we have a [TextInput](https://docs.rs/iced/0.12.1/iced/widget/struct.TextInput.html) for names and a submit [Button](https://docs.rs/iced/0.12.1/iced/widget/struct.Button.html).
-We pass `name` field of `PageA` to `new` function of `PageB` when we press the submit button.
+对于 `PageA`（登录表单），我们有一个用于输入名字的 [TextInput](https://docs.rs/iced/0.12.1/iced/widget/struct.TextInput.html) 和一个提交的 [Button](https://docs.rs/iced/0.12.1/iced/widget/struct.Button.html)。
+当我们按下提交按钮时，我们将 `PageA` 的 `name` 字段传递给 `PageB` 的 `new` 函数。
 
 ```rust
 #[derive(Debug, Clone)]
@@ -100,9 +101,9 @@ impl Page for PageA {
 }
 ```
 
-![Page A](./pic/passing_parameters_across_pages_a.png)
+![页面 A](./pic/passing_parameters_across_pages_a.png)
 
-In `PageB`, we receive the name from `new` function and display the name in `view`.
+在 `PageB` 中，我们从 `new` 函数接收名字，并在 `view` 中显示这个名字。
 
 ```rust
 #[derive(Debug, Clone)]
@@ -141,8 +142,8 @@ impl Page for PageB {
 }
 ```
 
-![Page B](./pic/passing_parameters_across_pages_b.png)
+![页面 B](./pic/passing_parameters_across_pages_b.png)
 
-:arrow_right:  Next: [Navigation History](./navigation_history.md)
+:arrow_right: 下一步：[导航历史](./navigation_history.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
