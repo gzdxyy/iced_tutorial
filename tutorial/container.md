@@ -1,7 +1,8 @@
-# Container
 
-[Container](https://docs.rs/iced/0.12.1/iced/widget/container/struct.Container.html) is another way to help us laying out widgets, especially when we need to algin a widget center both horizontally and vertically.
-[Container](https://docs.rs/iced/0.12.1/iced/widget/container/struct.Container.html) accepts any widget including [Column](https://docs.rs/iced/0.12.1/iced/widget/struct.Column.html) and [Row](https://docs.rs/iced/0.12.1/iced/widget/struct.Row.html).
+# 容器
+
+[Container](https://docs.rs/iced/0.12.1/iced/widget/container/struct.Container.html) 是另一种帮助我们布局控件的方法，特别是当我们需要在水平和垂直方向上都居中对齐控件时。
+[Container](https://docs.rs/iced/0.12.1/iced/widget/container/struct.Container.html) 可以接收任何控件，包括 [Column](https://docs.rs/iced/0.12.1/iced/widget/struct.Column.html) 和 [Row](https://docs.rs/iced/0.12.1/iced/widget/struct.Row.html)。
 
 ```rust
 use iced::{
@@ -31,13 +32,13 @@ impl Sandbox for MyApp {
 
     fn view(&self) -> iced::Element<Self::Message> {
         column![
-            Container::new("Construct from struct"),
-            container("Construct from function"),
-            container("With padding").padding(20),
-            container("Different alignment")
+            Container::new("通过结构体构造"),
+            container("通过函数构造"),
+            container("带填充").padding(20),
+            container("不同的水平对齐")
                 .width(Length::Fill)
                 .align_x(Horizontal::Center),
-            container("Different alignment for vertical axis")
+            container("不同的垂直对齐轴")
                 .height(Length::Fill)
                 .align_y(Vertical::Center),
         ]
@@ -46,14 +47,14 @@ impl Sandbox for MyApp {
 }
 ```
 
-![Container](./pic/container.png)
+![容器](./pic/container.png)
 
-If we want to center a widget both horizontally and vertically, we can use the following code:
+如果我们想要在水平和垂直方向上都居中一个控件，我们可以使用以下代码：
 
 ```rust
-container("Center").width(Length::Fill).height(Length::Fill).center_x().center_y()
+container("中心").width(Length::Fill).height(Length::Fill).center_x().center_y()
 ```
 
-:arrow_right:  Next: [Scrollable](./scrollable.md)
+:arrow_right: 下一步：[可滚动](./scrollable.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
