@@ -1,16 +1,17 @@
-# Drawing Shapes
 
-[Canvas](https://docs.rs/iced/0.12.1/iced/widget/canvas/struct.Canvas.html) is a widget that helps us drawing free-style shapes.
-To use the widget, we need to enable the [canvas](https://docs.rs/crate/iced/0.12.1/features#canvas) feature.
+# 绘制形状
+
+[Canvas](https://docs.rs/iced/0.12.1/iced/widget/canvas/struct.Canvas.html) 是一个帮助我们绘制自由风格形状的控件。
+要使用此控件，我们需要启用 [canvas](https://docs.rs/crate/iced/0.12.1/features#canvas) 特性。
 
 ```toml
 [dependencies]
 iced = { version = "0.12.1", features = ["canvas"] }
 ```
 
-We use [Canvas::new](https://docs.rs/iced/0.12.1/iced/widget/canvas/struct.Canvas.html#method.new) to obtain the canvas widget.
-This function accepts a [Program](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html) trait.
-We can create a struct (say, `MyProgram`) to implement this trait.
+我们使用 [Canvas::new](https://docs.rs/iced/0.12.1/iced/widget/canvas/struct.Canvas.html#method.new) 来获取画布控件。
+此函数接受一个 [Program](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html) 特性。
+我们可以创建一个结构体（比如说 `MyProgram`）来实现这个特性。
 
 ```rust
 impl<Message> Program<Message> for MyProgram {
@@ -29,17 +30,17 @@ impl<Message> Program<Message> for MyProgram {
 }
 ```
 
-There is a generic data type `Message` when we implement the [Program](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html) trait.
-This helps us adapting to our [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message) in [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html).
+在实现 [Program](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html) 特性时，有一个通用数据类型 `Message`。
+这有助于我们适应 [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) 中的 [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message)。
 
-The associated type [State](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html#associatedtype.State) is not used in our example, so we set it to `()`.
+关联类型 [State](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html#associatedtype.State) 在我们的示例中没有使用，所以我们将其设置为 `()`。
 
-The key of [Program](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html) is the [draw](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html#tymethod.draw) method.
-In the method, we define what shapes we are going to draw.
-We use [Frame](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html) as a *pen* to draw shapes.
-For example, we use the [fill_rectangle](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html#method.fill_rectangle) method of [Frame](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html) to draw a filled rectangle.
-Or we can stroke and fill any [Path](https://docs.rs/iced/0.12.1/iced/widget/canvas/struct.Path.html).
-Finally, we use the [into_geometry](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html#method.into_geometry) method of [Frame](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html) to return the [Geometry](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Geometry.html) as required by the [draw](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html#tymethod.draw) method.
+[Program](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html) 的关键是 [draw](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html#tymethod.draw) 方法。
+在该方法中，我们定义要绘制的形状。
+我们使用 [Frame](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html) 作为 *笔* 来绘制形状。
+例如，我们使用 [Frame](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html) 的 [fill_rectangle](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html#method.fill_rectangle) 方法绘制一个填充的矩形。
+或者我们可以描边和填充任何 [Path](https://docs.rs/iced/0.12.1/iced/widget/canvas/struct.Path.html)。
+最后，我们使用 [Frame](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html) 的 [into_geometry](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Frame.html#method.into_geometry) 方法返回 [Geometry](https://docs.rs/iced/0.12.1/iced/widget/canvas/enum.Geometry.html)，这是 [draw](https://docs.rs/iced/0.12.1/iced/widget/canvas/trait.Program.html#tymethod.draw) 方法所要求的。
 
 ```rust
 use iced::{
@@ -121,8 +122,8 @@ impl<Message> Program<Message> for MyProgram {
 }
 ```
 
-![Drawing Shapes](./pic/drawing_shapes.png)
+![绘制形状](./pic/drawing_shapes.png)
 
-:arrow_right:  Next: [Drawing With Caches](./drawing_with_caches.md)
+:arrow_right: 下一步：[使用缓存绘制](./drawing_with_caches.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
