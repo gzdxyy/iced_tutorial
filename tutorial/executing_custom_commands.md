@@ -1,12 +1,13 @@
-# Executing Custom Commands
 
-[Commands](https://docs.rs/iced/0.12.1/iced/struct.Command.html) can help us executing asynchronous functions.
-To do this, we need to enable one of the following features: [tokio](https://docs.rs/crate/iced/0.12.1/features#tokio), [async-std](https://docs.rs/crate/iced/0.12.1/features#async-std), or [smol](https://docs.rs/crate/iced/0.12.1/features#smol).
-The corresponding asynchronous runtime ([tokio](https://crates.io/crates/tokio), [async-std](https://crates.io/crates/async-std), or [smol](https://crates.io/crates/smol)) must also be added.
+# 执行自定义命令
 
-Here, we use [tokio](https://crates.io/crates/tokio) as an example.
-We enable [tokio](https://docs.rs/crate/iced/0.12.1/features#tokio) feature and add [tokio](https://crates.io/crates/tokio) crate.
-The dependencies of `Cargo.toml` should look like this:
+[Commands](https://docs.rs/iced/0.12.1/iced/struct.Command.html) 可以帮助我们执行异步函数。
+为此，我们需要启用以下特性之一：[tokio](https://docs.rs/crate/iced/0.12.1/features#tokio)、[async-std](https://docs.rs/crate/iced/0.12.1/features#async-std) 或 [smol](https://docs.rs/crate/iced/0.12.1/features#smol)。
+还必须添加相应的异步运行时（[tokio](https://crates.io/crates/tokio)、[async-std](https://crates.io/crates/async-std) 或 [smol](https://crates.io/crates/smol)）。
+
+这里，我们以 [tokio](https://crates.io/crates/tokio) 为例。
+我们启用 [tokio](https://docs.rs/crate/iced/0.12.1/features#tokio) 特性并添加 [tokio](https://crates.io/crates/tokio) crate。
+`Cargo.toml` 的依赖项应该如下所示：
 
 ```toml
 [dependencies]
@@ -14,12 +15,12 @@ iced = { version = "0.12.1", features = ["tokio"] }
 tokio = { version = "1.37.0", features = ["time"] }
 ```
 
-We use [Command::perform](https://docs.rs/iced/0.12.1/iced/struct.Command.html#method.perform) to execute an asynchronous function.
-The first parameter of [Command::perform](https://docs.rs/iced/0.12.1/iced/struct.Command.html#method.perform) is an asynchronous function, and the second parameter is a function that returns `MyAppMessage`.
-The `MyAppMessage` will be produced once the asynchronous function is done.
+我们使用 [Command::perform](https://docs.rs/iced/0.12.1/iced/struct.Command.html#method.perform) 来执行异步函数。
+[Command::perform](https://docs.rs/iced/0.12.1/iced/struct.Command.html#method.perform) 的第一个参数是一个异步函数，第二个参数是一个返回 `MyAppMessage` 的函数。
+一旦异步函数完成，我们将收到 `MyAppMessage::Done`。
 
-In the following code, we use a simple asynchronous function [tokio::time::sleep](https://docs.rs/tokio/latest/tokio/time/fn.sleep.html).
-When the asynchronous function finished, we will receive `MyAppMessage::Done`.
+在以下代码中，我们使用了一个简单的异步函数 [tokio::time::sleep](https://docs.rs/tokio/latest/tokio/time/fn.sleep.html)。
+当异步函数完成时，我们将收到 `MyAppMessage::Done`。
 
 ```rust
 use std::time::Duration;
@@ -86,8 +87,8 @@ impl Application for MyApp {
 }
 ```
 
-![Executing custom commands](./pic/executing_custom_commands.png)
+![执行自定义命令](./pic/executing_custom_commands.png)
 
-:arrow_right:  Next: [Initializing A Different Window](./initializing_a_different_window.md)
+:arrow_right: 下一步：[初始化不同的窗口](./initializing_a_different_window.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
