@@ -1,12 +1,13 @@
-# Changing The Window Dynamically
 
-We can use functions provided in [window](https://docs.rs/iced/0.12.1/iced/window/index.html) module to change the window after it is initialized.
-For example, to [resize](https://docs.rs/iced/0.12.1/iced/window/fn.resize.html) the window.
-These functions return [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html), which can be used as the return value in [update](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.update) method.
-Developers might be interested in other [Commands](https://docs.rs/iced/0.12.1/iced/struct.Command.html) in [window](https://docs.rs/iced/0.12.1/iced/window/index.html) module.
+# 动态更改窗口
 
-The [resize](https://docs.rs/iced/0.12.1/iced/window/fn.resize.html) function needs an ID of the window we are going to resize.
-Internally, Iced reserves [window::Id::MAIN](https://docs.rs/iced/0.12.1/iced/window/struct.Id.html#associatedconstant.MAIN) for the first window spawned.
+我们可以在初始化窗口后使用 [window](https://docs.rs/iced/0.12.1/iced/window/index.html) 模块提供的函数来更改窗口。
+例如，使用 [resize](https://docs.rs/iced/0.12.1/iced/window/fn.resize.html) 来调整窗口大小。
+这些函数返回 [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html)，可以作为 [update](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.update) 方法的返回值。
+开发人员可能对 [window](https://docs.rs/iced/0.12.1/iced/window/index.html) 模块中的其他 [Commands](https://docs.rs/iced/0.12.1/iced/struct.Command.html) 感兴趣。
+
+[resize](https://docs.rs/iced/0.12.1/iced/window/fn.resize.html) 函数需要我们将要调整大小的窗口的 ID。
+在内部，Iced 为首次生成的窗口预留了 [window::Id::MAIN](https://docs.rs/iced/0.12.1/iced/window/struct.Id.html#associatedconstant.MAIN)。
 
 ```rust
 use iced::{
@@ -76,8 +77,8 @@ impl Application for MyApp {
 }
 ```
 
-![Changing the window dynamically](./pic/changing_the_window_dynamically.png)
+![动态更改窗口](./pic/changing_the_window_dynamically.png)
 
-:arrow_right:  Next: [Closing The Window On Demand](./closing_the_window_on_demand.md)
+:arrow_right: 下一步：[按需关闭窗口](./closing_the_window_on_demand.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
