@@ -1,14 +1,15 @@
-# Memoryless Pages
 
-The [previous tutorial](./more_than_one_page.md) has a problem that the fields can still be accessed when we navigate to other pages.
-This brings potential security problems, e.g., the input password could be accessed in other pages.
+# 无记忆页面
 
-To fix this problem, we can use [trait objects](https://doc.rust-lang.org/stable/book/ch17-02-trait-objects.html).
-The `Page` trait below is responsible for [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) and [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) for a single page.
-In the main struct `MyApp`, we dispatch [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) and [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) to the corresponding page that is indicated by `page` field in `MyApp`.
-The [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) method in `MyApp` is also responsible for switching pages.
+[之前的教程](./more_than_one_page.md) 中存在一个问题，即当我们导航到其他页面时，仍然可以访问字段。
+这可能带来潜在的安全问题，例如，在其他页面上可能访问到输入的密码。
 
-In addition, we explicitly distinguish messages from different pages in `MyAppMessage`.
+为了解决这个问题，我们可以使用 [trait 对象](https://doc.rust-lang.org/stable/book/ch17-02-trait-objects.html)。
+下面的 `Page` trait 负责单个页面的 [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) 和 [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view)。
+在主结构体 `MyApp` 中，我们根据 `MyApp` 中的 `page` 字段派发 [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) 和 [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) 到相应的页面。
+`MyApp` 中的 [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) 方法还负责页面的切换。
+
+此外，我们明确区分了不同页面的 `MyAppMessage` 中的消息。
 
 ```rust
 use iced::{
@@ -61,10 +62,10 @@ impl Sandbox for MyApp {
 }
 ```
 
-In this tutorial, we have two pages, `PageA` and `PageB`.
-`PageA` is a simple login form and `PageB` is a simple hello page.
-Let's start with `PageB`.
-In its `update` method, we only care about messages of `PageBMessage`.
+在这个教程中，我们有两个页面，`PageA` 和 `PageB`。
+`PageA` 是一个简单的登录表单，而 `PageB` 是一个简单的问候页面。
+让我们从 `PageB` 开始。
+在其 `update` 方法中，我们只关心 `PageBMessage` 的消息。
 
 ```rust
 #[derive(Debug, Clone)]
@@ -101,12 +102,12 @@ impl Page for PageB {
 }
 ```
 
-![Page B](./pic/memoryless_pages_b.png)
+![页面 B](./pic/memoryless_pages_b.png)
 
-In `PageA`, we check the password when the login button is pressed.
-If it is a valid password, we switch to `PageB`.
-Note that `PageA` (and its `password` field) is dropped after we switch to `PageB`.
-This ensures the password is protected.
+在 `PageA` 中，我们在按下登录按钮时检查密码。
+如果它是有效的密码，我们切换到 `PageB`。
+注意，在我们切换到 `PageB` 后，`PageA`（及其 `password` 字段）将被丢弃。
+这确保了密码的安全。
 
 ```rust
 #[derive(Debug, Clone)]
@@ -155,8 +156,8 @@ impl Page for PageA {
 }
 ```
 
-![Page A](./pic/memoryless_pages_a.png)
+![页面 A](./pic/memoryless_pages_a.png)
 
-:arrow_right:  Next: [Passing Parameters Across Pages](./passing_parameters_across_pages.md)
+:arrow_right: 下一步：[跨页面传递参数](./passing_parameters_across_pages.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
