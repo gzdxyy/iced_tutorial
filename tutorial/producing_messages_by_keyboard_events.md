@@ -1,15 +1,20 @@
-# Producing Messages By Keyboard Events
 
-This tutorial follows from the [previous tutorial](./producing_messages_by_mouse_events.md).
-Instead of capturing [Event::Mouse](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html#variant.Mouse) and [Event::Touch](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html#variant.Touch), we capture [Event::Keyboard](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html#variant.Keyboard) in the [listen_with](https://docs.rs/iced/0.12.1/iced/event/fn.listen_with.html) function.
+# 通过鼠标事件生成消息
+
+要捕获窗口的事件，我们在 `Application` trait 中实现 [subscription](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#method.subscription) 方法。这个方法返回一个 [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html) 结构体，它允许我们指定如何处理事件。我们可以使用 [listen_with](https://docs.rs/iced/0.12.1/iced/event/fn.listen_with.html) 函数来构造一个 [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html)。 [listen_with](https://docs.rs/iced/0.12.1/iced/event/fn.listen_with.html) 函数接受一个函数作为输入。输入函数接受两个参数，[Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) 和 [Status](https://docs.rs/iced/0.12.1/iced/event/enum.Status.html)，并返回 Option\<`MyAppMessage`>，这意味着这个函数能够将 [Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) 转换为 `MyAppMessage`。然后我们在 [update](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.update) 方法中接收转换后的 `MyAppMessage`。
+
+在输入函数中，我们只关心被忽略的事件（即，不被控件处理的事件）通过检查 [Status](https://docs.rs/iced/0.12.1/iced/widget/canvas/event/enum.Status.html) 是否为 [Status::Ignored](https://docs.rs/iced/0.12.1/iced/widget/canvas/event/enum.Status.html#variant.Ignored)。
+
+在本教程中，我们捕获 [Event::Mouse(...)](https://docs.rs/iced/0.12.1/iced/enum.Event.html#variant.Mouse) 和 [Event::Touch(...)](https://docs.rs/iced/0.12.1/iced/enum.Event.html#variant.Touch) 并生成消息。
 
 ```rust
 use iced::{
-    event::{self, Status},
+    event::{self, Event, Status},
     executor,
-    keyboard::{key::Named, Event::KeyPressed, Key},
+    mouse::Event::CursorMoved,
+    touch::Event::FingerMoved,
     widget::text,
-    Application, Event, Settings,
+    Application, Point, Settings,
 };
 
 fn main() -> iced::Result {
@@ -18,11 +23,11 @@ fn main() -> iced::Result {
 
 #[derive(Debug, Clone)]
 enum MyAppMessage {
-    KeyPressed(String),
+    PointUpdated(Point),
 }
 
 struct MyApp {
-    pressed_key: String,
+    mouse_point: Point,
 }
 
 impl Application for MyApp {
@@ -34,7 +39,7 @@ impl Application for MyApp {
     fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
         (
             Self {
-                pressed_key: "".into(),
+                mouse_point: Point::ORIGIN,
             },
             iced::Command::none(),
         )
@@ -46,39 +51,29 @@ impl Application for MyApp {
 
     fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
         match message {
-            MyAppMessage::KeyPressed(s) => self.pressed_key = s,
+            MyAppMessage::PointUpdated(p) => self.mouse_point = p,
         }
         iced::Command::none()
     }
 
     fn view(&self) -> iced::Element<Self::Message> {
-        text(self.pressed_key.as_str()).into()
+        text(format!("{:?}", self.mouse_point)).into()
     }
 
     fn subscription(&self) -> iced::Subscription<Self::Message> {
         event::listen_with(|event, status| match (event, status) {
-            (
-                Event::Keyboard(KeyPressed {
-                    key: Key::Named(Named::Enter),
-                    ..
-                }),
-                Status::Ignored,
-            ) => Some(MyAppMessage::KeyPressed("Enter".into())),
-            (
-                Event::Keyboard(KeyPressed {
-                    key: Key::Named(Named::Space),
-                    ..
-                }),
-                Status::Ignored,
-            ) => Some(MyAppMessage::KeyPressed("Space".into())),
+            (Event::Mouse(CursorMoved { position }), Status::Ignored)
+            | (Event::Touch(FingerMoved { position, .. }), Status::Ignored) => {
+                Some(MyAppMessage::PointUpdated(position))
+            }
             _ => None,
         })
     }
 }
 ```
 
-![Producing messages by keyboard events](./pic/producing_messages_by_keyboard_events.png)
+![通过鼠标事件生成消息](./pic/producing_messages_by_mouse_events.png)
 
-:arrow_right:  Next: [Producing Messages By Timers](./producing_messages_by_timers.md)
+:arrow_right: 下一步：[通过键盘事件生成消息](./producing_messages_by_keyboard_events.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
