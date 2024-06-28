@@ -1,11 +1,12 @@
-# Closing The Window On Demand
 
-This tutorial follows the [previous tutorial](./changing_the_window_dynamically.md).
-We use the [close](https://docs.rs/iced/0.12.1/iced/window/fn.close.html) function in [window](https://docs.rs/iced/0.12.1/iced/window/index.html) module to close the window.
-This is also done by returning the [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html) obtained by the [close](https://docs.rs/iced/0.12.1/iced/window/fn.close.html) function.
+# 按需关闭窗口
 
-Similar to the [resize](https://docs.rs/iced/0.12.1/iced/window/fn.resize.html) function, the [close](https://docs.rs/iced/0.12.1/iced/window/fn.close.html) function also needs an ID of the window.
-We pass [window::Id::MAIN](https://docs.rs/iced/0.12.1/iced/window/struct.Id.html#associatedconstant.MAIN) for the ID.
+本教程是在 [上一个教程](./changing_the_window_dynamically.md) 的基础上进行的。
+我们使用 [window](https://docs.rs/iced/0.12.1/iced/window/index.html) 模块中的 [close](https://docs.rs/iced/0.12.1/iced/window/fn.close.html) 函数来关闭窗口。
+这也是通过返回由 [close](https://docs.rs/iced/0.12.1/iced/window/fn.close.html) 函数获得的 [Command](https://docs.rs/iced/0.12.1/iced/struct.Command.html) 来完成的。
+
+与 [resize](https://docs.rs/iced/0.12.1/iced/window/fn.resize.html) 函数类似，[close](https://docs.rs/iced/0.12.1/iced/window/fn.close.html) 函数也需要窗口的 ID。
+我们传递 [window::Id::MAIN](https://docs.rs/iced/0.12.1/iced/window/struct.Id.html#associatedconstant.MAIN) 作为 ID。
 
 ```rust
 use iced::{
@@ -51,8 +52,8 @@ impl Application for MyApp {
 }
 ```
 
-![Closing the window on demand](./pic/closing_the_window_on_demand.png)
+![按需关闭窗口](./pic/closing_the_window_on_demand.png)
 
-:arrow_right:  Next: [On Pressed/Released Of Some Widgets](./on_pressed_released_of_some_widgets.md)
+:arrow_right: 下一步：[一些控件的按下/释放](./on_pressed_released_of_some_widgets.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
