@@ -1,13 +1,14 @@
-# Custom Styles
 
-We mentioned in the [previous tutorial](./changing_styles.md) about how to change styles of widgets by the [enums](https://doc.rust-lang.org/std/keyword.enum.html) in [theme](https://docs.rs/iced/0.12.1/iced/theme/index.html) module.
-Most [enums](https://doc.rust-lang.org/std/keyword.enum.html) in [theme](https://docs.rs/iced/0.12.1/iced/theme/index.html) module support `Custom` variant, e.g., [theme::Radio::Custom(...)](https://docs.rs/iced/0.12.1/iced/theme/enum.Radio.html#variant.Custom).
-This variant takes [radio::StyleSheet](https://docs.rs/iced/0.12.1/iced/widget/radio/trait.StyleSheet.html) trait as its parameter.
-To use the variant, we need to implement the trait (such as `RadioStyle` struct in the following code).
-The [associated type](https://doc.rust-lang.org/stable/book/ch19-03-advanced-traits.html#specifying-placeholder-types-in-trait-definitions-with-associated-types) of the trait should be set to [iced::Theme](https://docs.rs/iced/0.12.1/iced/enum.Theme.html).
-The methods in the trait return [radio::Appearance](https://docs.rs/iced/0.12.1/iced/widget/radio/struct.Appearance.html).
-We can use [theme::Radio::Default](https://docs.rs/iced/0.12.1/iced/theme/enum.Radio.html#variant.Default) to obtain the default value of [radio::Appearance](https://docs.rs/iced/0.12.1/iced/widget/radio/struct.Appearance.html), e.g., `style.active(&theme::Radio::Default, is_selected)`.
-After that, we can modify the default [radio::Appearance](https://docs.rs/iced/0.12.1/iced/widget/radio/struct.Appearance.html) based on our needs.
+# 自定义样式
+
+在[之前的教程](./changing_styles.md)中，我们讨论了如何通过 [theme](https://docs.rs/iced/0.12.1/iced/theme/index.html) 模块中的 [enums](https://doc.rust-lang.org/std/keyword.enum.html) 更改控件的样式。
+大多数 [theme](https://docs.rs/iced/0.12.1/iced/theme/index.html) 模块中的 [enums](https://doc.rust-lang.org/std/keyword.enum.html) 支持 `Custom` 变体，例如 [theme::Radio::Custom(...)](https://docs.rs/iced/0.12.1/iced/theme/enum.Radio.html#variant.Custom)。
+这个变体将其参数作为 [radio::StyleSheet](https://docs.rs/iced/0.12.1/iced/widget/radio/trait.StyleSheet.html) 特性。
+要使用这个变体，我们需要实现该特性（如下代码中的 `RadioStyle` 结构体）。
+特性的 [associated type](https://doc.rust-lang.org/stable/book/ch19-03-advanced-traits.html#specifying-placeholder-types-in-trait-definitions-with-associated-types) 应设置为 [iced::Theme](https://docs.rs/iced/0.12.1/iced/enum.Theme.html)。
+特性中的方法返回 [radio::Appearance](https://docs.rs/iced/0.12.1/iced/widget/radio/struct.Appearance.html)。
+我们可以使用 [theme::Radio::Default](https://docs.rs/iced/0.12.1/iced/theme/enum.Radio.html#variant.Default) 来获取 [radio::Appearance](https://docs.rs/iced/0.12.1/iced/widget/radio/struct.Appearance.html) 的默认值，例如 `style.active(&theme::Radio::Default, is_selected)`。
+之后，我们可以根据需要修改默认的 [radio::Appearance](https://docs.rs/iced/0.12.1/iced/widget/radio/struct.Appearance.html)。
 
 ```rust
 use iced::{
@@ -80,8 +81,8 @@ impl radio::StyleSheet for RadioStyle {
 }
 ```
 
-![Custom styles](./pic/custom_styles.png)
+![自定义样式](./pic/custom_styles.png)
 
-:arrow_right:  Next: [More Than One Page](./more_than_one_page.md)
+:arrow_right: 下一步：[超过一个页面](./more_than_one_page.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
