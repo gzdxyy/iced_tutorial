@@ -1,7 +1,8 @@
-# Batch Commands
 
-Sometimes, we want to execute two or more `Commands` at the same time.
-In this case, we can use `Command::batch` function.
+# 批量命令
+
+有时，我们可能想要同时执行两个或更多的 `Commands`。
+在这种情况下，我们可以使用 `Command::batch` 函数。
 
 ```rust
 use iced::{
@@ -70,8 +71,8 @@ impl Application for MyApp {
 }
 ```
 
-![Batch commands](./pic/batch_commands.png)
+![批量命令](./pic/batch_commands.png)
 
-:arrow_right:  Next: [Executing Custom Commands](./executing_custom_commands.md)
+:arrow_right: 下一步：[执行自定义命令](./executing_custom_commands.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
