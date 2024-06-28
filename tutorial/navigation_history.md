@@ -1,11 +1,12 @@
-# Navigation History
 
-This tutorial follows the [previous tutorial](./passing_parameters_across_pages.md).
-The framework introduced in the [previous tutorial](./passing_parameters_across_pages.md) can be extended to handle page navigation history, which is capable of restoring past pages.
+# 导航历史
 
-Instead of keeping a single page in the main struct `MyApp`, we can keep a [Vec](https://doc.rust-lang.org/std/vec/struct.Vec.html) of pages.
-We control how the [Vec](https://doc.rust-lang.org/std/vec/struct.Vec.html) would change in [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) method of [SandBox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html).
-The communication between [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) of [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) and `update` of `Page` trait is through a custom [enum](https://doc.rust-lang.org/std/keyword.enum.html) `Navigation`.
+本教程是在 [上一个教程](./passing_parameters_across_pages.md) 的基础上进行的。
+[上一个教程](./passing_parameters_across_pages.md) 中介绍的框架可以扩展以处理页面导航历史记录，它能够恢复过去的页面。
+
+我们不是在主结构体 `MyApp` 中保持单个页面，而是可以保持一个页面的 [Vec](https://doc.rust-lang.org/std/vec/struct.Vec.html)。
+我们控制 [Vec](https://doc.rust-lang.org/std/vec/struct.Vec.html) 在 [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) 的 [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) 方法中如何变化。
+[Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) 的 [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) 和 `Page` trait 的 `update` 之间的通信是通过自定义的 [enum](https://doc.rust-lang.org/std/keyword.enum.html) `Navigation` 完成的。
 
 ```rust
 use iced::{
@@ -70,7 +71,7 @@ impl Sandbox for MyApp {
 }
 ```
 
-The following is the first type of pages:
+以下是第一类页面的示例：
 
 ```rust
 #[derive(Debug, Clone)]
@@ -109,9 +110,9 @@ impl Page for PageA {
 }
 ```
 
-![Page A](./pic/navigation_history_a.png)
+![页面 A](./pic/navigation_history_a.png)
 
-And the second type of pages:
+以及第二类页面的示例：
 
 ```rust
 #[derive(Debug, Clone)]
@@ -146,7 +147,7 @@ impl Page for PageB {
 
     fn view(&self) -> iced::Element<MyAppMessage> {
         column![
-            text(self.id),
+            text(self.id.to_string()),
             row![
                 button("Back").on_press(MyAppMessage::PageB(Mb::BackButtonPressed)),
                 button("Next").on_press(MyAppMessage::PageB(Mb::NextButtonPressed)),
@@ -157,8 +158,8 @@ impl Page for PageB {
 }
 ```
 
-![Page B](./pic/navigation_history_b.png)
+![页面 B](./pic/navigation_history_b.png)
 
-:arrow_right:  Next: [From Sandbox To Application](./from_sandbox_to_application.md)
+:arrow_right: 下一步：[从 Sandbox 到 Application](./from_sandbox_to_application.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
