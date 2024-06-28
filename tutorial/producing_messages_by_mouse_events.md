@@ -1,15 +1,16 @@
-# Producing Messages By Mouse Events
 
-To capture events of the window, we implement [subscription](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#method.subscription) method in [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html).
-This method returns [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html) struct, which allows us to specify how to handle events.
-We can use [listen_with](https://docs.rs/iced/0.12.1/iced/event/fn.listen_with.html) function to construct a [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html).
-The [listen_with](https://docs.rs/iced/0.12.1/iced/event/fn.listen_with.html) function takes a function as its input.
-The input function takes two parameters, [Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) and [Status](https://docs.rs/iced/0.12.1/iced/event/enum.Status.html), and returns [Option](https://doc.rust-lang.org/std/option/enum.Option.html)\<`MyAppMessage`>, which means this function is capable of transforming [Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) to `MyAppMessage`.
-We then receive the transformed `MyAppMessage` in [update](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.update) method.
+# 通过鼠标事件生成消息
 
-In the input function, we only care about ignored events (i.e., events that is not handled by widgets) by checking if [Status](https://docs.rs/iced/0.12.1/iced/widget/canvas/event/enum.Status.html) is [Status::Ignored](https://docs.rs/iced/0.12.1/iced/widget/canvas/event/enum.Status.html#variant.Ignored).
+要捕获窗口的事件，我们在 [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html) 中实现了 [subscription](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#method.subscription) 方法。
+此方法返回 [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html) 结构体，允许我们指定如何处理事件。
+我们可以使用 [listen_with](https://docs.rs/iced/0.12.1/iced/event/fn.listen_with.html) 函数来构建 [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html)。
+[listen_with](https://docs.rs/iced/0.12.1/iced/event/fn.listen_with.html) 函数以一个函数作为输入。
+输入函数接受两个参数，[Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) 和 [Status](https://docs.rs/iced/0.12.1/iced/event/enum.Status.html)，并返回 [Option](https://doc.rust-lang.org/std/option/enum.Option.html)\<`MyAppMessage`>，这意味着此函数能够将 [Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) 转换为 `MyAppMessage`。
+然后我们在 [update](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.update) 方法中接收转换后的 `MyAppMessage`。
 
-In this tutorial, we capture [Event::Mouse(...)](https://docs.rs/iced/0.12.1/iced/enum.Event.html#variant.Mouse) and [Event::Touch(...)](https://docs.rs/iced/0.12.1/iced/enum.Event.html#variant.Touch) and produce messages.
+在输入函数中，我们只关心被忽略的事件（即，未被控件处理的事件），通过检查 [Status](https://docs.rs/iced/0.12.1/iced/widget/canvas/event/enum.Status.html) 是否为 [Status::Ignored](https://docs.rs/iced/0.12.1/iced/widget/canvas/event/enum.Status.html#variant.Ignored)。
+
+在本教程中，我们捕获 [Event::Mouse(...)](https://docs.rs/iced/0.12.1/iced/enum.Event.html#variant.Mouse) 和 [Event::Touch(...)](https://docs.rs/iced/0.12.1/iced/enum.Event.html#variant.Touch) 并生成消息。
 
 ```rust
 use iced::{
@@ -76,8 +77,8 @@ impl Application for MyApp {
 }
 ```
 
-![Producing messages by mouse events](./pic/producing_messages_by_mouse_events.png)
+![通过鼠标事件生成消息](./pic/producing_messages_by_mouse_events.png)
 
-:arrow_right:  Next: [Producing Messages By Keyboard Events](./producing_messages_by_keyboard_events.md)
+:arrow_right: 下一步：[通过键盘事件生成消息](./producing_messages_by_keyboard_events.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
