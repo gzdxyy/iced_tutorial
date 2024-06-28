@@ -1,18 +1,19 @@
-# Producing Messages By Timers
 
-To use build-in timers, we need to enable one of the following features: [tokio](https://docs.rs/crate/iced/0.12.1/features#tokio), [async-std](https://docs.rs/crate/iced/0.12.1/features#async-std), or [smol](https://docs.rs/crate/iced/0.12.1/features#smol).
-In this tutorial, we use [tokio](https://docs.rs/crate/iced/0.12.1/features#tokio) feature.
-The dependencies of `Cargo.toml` should look like this:
+# 通过计时器生成消息
+
+要使用内置的计时器，我们需要启用以下特性之一：[tokio](https://docs.rs/crate/iced/0.12.1/features#tokio)、[async-std](https://docs.rs/crate/iced/0.12.1/features#async-std) 或 [smol](https://docs.rs/crate/iced/0.12.1/features#smol)。
+在本教程中，我们使用 [tokio](https://docs.rs/crate/iced/0.12.1/features#tokio) 特性。
+`Cargo.toml` 的依赖应该如下所示：
 
 ```toml
 [dependencies]
 iced = { version = "0.12.1", features = ["tokio"] }
 ```
 
-We use [time::every](https://docs.rs/iced/0.12.1/iced/time/fn.every.html) function to obtain [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html)\<[Instant](https://docs.rs/iced/0.12.1/iced/time/struct.Instant.html)> struct.
-Then we map the struct to [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html)\<`MyAppMessage`> by [Subscription::map](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html#method.map) method.
-The result will be returned in the [subscription](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#method.subscription) method of [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html).
-The corresponding `MyAppMessage` will be received in the [update](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.update) method.
+我们使用 [time::every](https://docs.rs/iced/0.12.1/iced/time/fn.every.html) 函数来获取 [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html)<[Instant](https://docs.rs/iced/0.12.1/iced/time/struct.Instant.html)> 结构体。
+然后我们通过 [Subscription::map](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html#method.map) 方法将该结构体映射为 [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html)<`MyAppMessage`>。
+结果将在 [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html) 的 [subscription](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#method.subscription) 方法中返回。
+相应的 `MyAppMessage` 将在 [update](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html#tymethod.update) 方法中接收。
 
 ```rust
 use iced::{
@@ -57,7 +58,7 @@ impl Application for MyApp {
     }
 
     fn view(&self) -> iced::Element<Self::Message> {
-        text(self.seconds).into()
+        text(self.seconds.to_string()).into()
     }
 
     fn subscription(&self) -> iced::Subscription<Self::Message> {
@@ -66,8 +67,8 @@ impl Application for MyApp {
 }
 ```
 
-![Producing messages by timers](./pic/producing_messages_by_timers.png)
+![通过计时器生成消息](./pic/producing_messages_by_timers.png)
 
-:arrow_right:  Next: [Batch Subscriptions](./batch_subscriptions.md)
+:arrow_right: 下一步：[批量订阅](./batch_subscriptions.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
