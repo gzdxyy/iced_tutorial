@@ -1,6 +1,7 @@
-# Changing Themes
 
-We can implement [theme](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#method.theme) method in [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) to return the desired theme.
+# 更改主题
+
+我们可以在 [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) 中实现 [theme](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#method.theme) 方法来返回所需的主题。
 
 ```rust
 use iced::{Sandbox, Settings};
@@ -30,14 +31,14 @@ impl Sandbox for MyApp {
 
     fn theme(&self) -> iced::Theme {
         iced::Theme::Dark
-        // or
+        // 或者
         // iced::Theme::Light
     }
 }
 ```
 
-![Changing themes](./pic/changing_themes.png)
+![更改主题](./pic/changing_themes.png)
 
-:arrow_right:  Next: [Changing Styles](./changing_styles.md)
+:arrow_right: 下一步：[更改样式](./changing_styles.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
