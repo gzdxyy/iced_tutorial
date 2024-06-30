@@ -1,15 +1,16 @@
-# Drawing Widgets
 
-In addition to the build-in widgets, we can also design our own custom widgets.
-To do so, we need to enable the [advanced](https://docs.rs/crate/iced/0.12.1/features#advanced) feature.
-The dependencies of the `Cargo.toml` file should look like this:
+# 绘制控件
+
+除了内置的控件，我们还可以设计自己的自定义控件。
+为此，我们需要启用 [advanced](https://docs.rs/crate/iced/0.12.1/features#advanced) 特性。
+`Cargo.toml` 文件中的依赖应该如下所示：
 
 ```toml
 [dependencies]
 iced = { version = "0.12.1", features = ["advanced"] }
 ```
 
-Then, we need a struct that implement [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) trait.
+然后，我们需要一个实现 [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) 特性的结构体。
 
 ```rust
 struct MyWidget;
@@ -46,8 +47,8 @@ where
 }
 ```
 
-We define the size of `MyWidget` by the methods: [size](https://docs.rs/iced/0.12.1/iced/advanced/trait.Widget.html#tymethod.size) and [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout).
-Currently, we set the width and height to [Length::Shrink](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.Shrink), to tell the layout system that we use the least space for this widget.
+我们通过 [size](https://docs.rs/iced/0.12.1/iced/advanced/trait.Widget.html#tymethod.size) 和 [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout) 方法定义 `MyWidget` 的大小。
+目前，我们将宽度和高度设置为 [Length::Shrink](https://docs.rs/iced/0.12.1/iced/enum.Length.html#variant.Shrink)，以告诉布局系统我们为这个控件使用最小的空间。
 
 ```rust
 fn size(&self) -> Size<Length> {
@@ -58,8 +59,8 @@ fn size(&self) -> Size<Length> {
 }
 ```
 
-Then, we tell the layout system the precise size we are going to use for the widget.
-In this example, our widget is of size `(100, 100)`.
+然后，我们告诉布局系统我们将要为控件使用的确切大小。
+在这个例子中，我们的控件大小为 `(100, 100)`。
 
 ```rust
 fn layout(&self, _renderer: &Renderer, _limits: &layout::Limits) -> layout::Node {
@@ -67,12 +68,12 @@ fn layout(&self, _renderer: &Renderer, _limits: &layout::Limits) -> layout::Node
 }
 ```
 
-Usually, the [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout) method would consider the [Limits](https://docs.rs/iced/0.12.1/iced/advanced/layout/struct.Limits.html) parameter, which is the constraints from the layout system.
-But now, we ignore it for simplicity.
+通常，[layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout) 方法会考虑 [Limits](https://docs.rs/iced/0.12.1/iced/advanced/layout/struct.Limits.html) 参数，这是来自布局系统的限制。
+但现在，为了简单起见，我们忽略它。
 
-Next, we draw our widget in the [draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) method.
-We use the given [Renderer](https://docs.rs/iced/0.12.1/iced/advanced/trait.Renderer.html) to do so.
-One may refer to the given [Theme](https://docs.rs/iced/0.12.1/iced/enum.Theme.html) and [Style](https://docs.rs/iced/0.12.1/iced/advanced/renderer/struct.Style.html) for the colors of the widget.
+接下来，我们在 [draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) 方法中绘制我们的控件。
+我们使用给定的 [Renderer](https://docs.rs/iced/0.12.1/iced/advanced/trait.Renderer.html) 来实现。
+可以参考给定的 [Theme](https://docs.rs/iced/0.12.1/iced/enum.Theme.html) 和 [Style](https://docs.rs/iced/0.12.1/iced/advanced/renderer/struct.Style.html) 来获取控件的颜色。
 
 ```rust
 fn draw(
@@ -100,9 +101,9 @@ fn draw(
 }
 ```
 
-The given [Layout](https://docs.rs/iced/0.12.1/iced/advanced/struct.Layout.html) parameter would be calculated automatically by the layout system according to the [size](https://docs.rs/iced/0.12.1/iced/advanced/trait.Widget.html#tymethod.size) and [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout) methods we defined before.
+给定的 [Layout](https://docs.rs/iced/0.12.1/iced/advanced/struct.Layout.html) 参数将由布局系统根据我们之前定义的 [size](https://docs.rs/iced/0.12.1/iced/advanced/trait.Widget.html#tymethod.size) 和 [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout) 方法自动计算。
 
-For convenience, we can implement `From<MyWidget>` for [Element](https://docs.rs/iced/0.12.1/iced/type.Element.html).
+为了方便起见，我们可以为 [Element](https://docs.rs/iced/0.12.1/iced/type.Element.html) 实现 `From<MyWidget>`。
 
 ```rust
 impl<'a, Message, Renderer> From<MyWidget> for Element<'a, Message, Theme, Renderer>
@@ -115,7 +116,7 @@ where
 }
 ```
 
-Finally, the widget can be added to our app by the following code.
+最后，我们可以通过以下代码将控件添加到我们的应用程序中。
 
 ```rust
 fn view(&self) -> iced::Element<Self::Message> {
@@ -128,8 +129,8 @@ fn view(&self) -> iced::Element<Self::Message> {
 }
 ```
 
-Note that it is not necessary to put `MyWidget` in a [Container](https://docs.rs/iced/0.12.1/iced/widget/container/struct.Container.html).
-We can add the widget directly into our app.
+注意，没有必要将 `MyWidget` 放在 [Container](https://docs.rs/iced/0.12.1/iced/widget/container/struct.Container.html) 中。
+我们可以直接将控件添加到我们的应用程序中。
 
 ```rust
 fn view(&self) -> iced::Element<Self::Message> {
@@ -137,7 +138,7 @@ fn view(&self) -> iced::Element<Self::Message> {
 }
 ```
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -237,8 +238,8 @@ where
 }
 ```
 
-![Drawing Widgets](./pic/drawing_widgets.png)
+![绘制控件](./pic/drawing_widgets.png)
 
-:arrow_right:  Next: [Updating Widgets From Outside](./updating_widgets_from_outside.md)
+:arrow_right: 下一步：[从外部更新控件](./updating_widgets_from_outside.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
