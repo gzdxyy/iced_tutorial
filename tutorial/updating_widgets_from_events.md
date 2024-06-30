@@ -1,9 +1,10 @@
-# Updating Widgets From Events
 
-Sometimes, we would like our widgets to handle their states by themselves.
-For example, a widget might change its states when receiving an [Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html).
+# 从事件中更新控件
 
-To do so, we implement the [on_event](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#method.on_event) method of [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html).
+有时，我们希望控件能够自行处理它们的状态。
+例如，当接收到 [Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) 时，控件可能会改变其状态。
+
+为此，我们实现了 [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) 的 [on_event](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#method.on_event) 方法。
 
 ```rust
 fn on_event(
@@ -30,12 +31,12 @@ fn on_event(
 }
 ```
 
-Our widget changes its `highlight` field every time when the space bar is pressed.
+每次按下空格键时，控件的 `highlight` 字段都会改变。
 
-If the [Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) passed to the [on_event](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#method.on_event) method is what the widget needs, we return [Status::Captured](https://docs.rs/iced/0.12.1/iced/event/enum.Status.html#variant.Captured).
-Otherwise, we return [Status::Ignored](https://docs.rs/iced/0.12.1/iced/event/enum.Status.html#variant.Ignored) to tell the system the event can be used by other widgets.
+如果传入 [on_event](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#method.on_event) 方法的 [Event](https://docs.rs/iced/0.12.1/iced/event/enum.Event.html) 是控件所需的，我们返回 [Status::Captured](https://docs.rs/iced/0.12.1/iced/event/enum.Status.html#variant.Captured)。
+否则，我们返回 [Status::Ignored](https://docs.rs/iced/0.12.1/iced/event/enum.Status.html#variant.Ignored) 以告诉系统该事件可以被其他控件使用。
 
-Since our widget maintains its own state, we do not need to pass the state from our app.
+由于我们的控件维护自己的状态，我们不需要从应用程序中传递状态。
 
 ```rust
 struct MyWidget {
@@ -49,7 +50,7 @@ impl MyWidget {
 }
 ```
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -186,12 +187,12 @@ where
 }
 ```
 
-When the space bar is pressed, the widget color switches between light and dark.
+按下空格键时，控件颜色在浅色和深色之间切换。
 
-![Updating Widgets From Events 1](./pic/updating_widgets_from_events_1.png)
+![从事件中更新控件 1](./pic/updating_widgets_from_events_1.png)
 
-![Updating Widgets From Events 2](./pic/updating_widgets_from_events_2.png)
+![从事件中更新控件 2](./pic/updating_widgets_from_events_2.png)
 
-:arrow_right:  Next: [Producing Widget Messages](./producing_widget_messages.md)
+:arrow_right: 下一步：[生成控件消息](./producing_widget_messages.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
