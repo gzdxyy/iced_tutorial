@@ -1,12 +1,13 @@
-# Loading Images Asynchronously
 
-In the previous tutorials, we introduced how to use [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html) to execute an asynchronous operation and how to display an image.
-This tutorial combines both and demonstrates how to load an image asynchronously.
+# 异步加载图像
 
-It is assumed that there is an image named `ferris.png` in the Cargo project root directory.
+在前面的教程中，我们介绍了如何使用 [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html) 执行异步操作以及如何显示图像。
+本教程结合了这两者，演示了如何异步加载图像。
 
-To use asynchronous and image functions, we have to include the corresponding asynchronous library and enable the corresponding features.
-The dependencies of the `Cargo.toml` file should look like this:
+假设在 Cargo 项目根目录中有一个名为 `ferris.png` 的图像。
+
+为了使用异步和图像功能，我们必须包含相应的异步库并启用相应的特性。
+`Cargo.toml` 文件的依赖项应该如下所示：
 
 ```toml
 [dependencies]
@@ -14,8 +15,8 @@ iced = { version = "0.12.1", features = ["image", "tokio"] }
 tokio = { version = "1.36.0", features = ["full"] }
 ```
 
-Our app will have three states: *start*, *loading* and *loaded*.
-We use two fields to encode the three states.
+我们的应用程序将有三个状态：*开始*、*加载中* 和 *已加载*。
+我们使用两个字段来编码这三个状态。
 
 ```rust
 struct MyApp {
@@ -24,18 +25,18 @@ struct MyApp {
 }
 ```
 
-When the state is
+当状态是
 
-* **start**: `image_handle` is `None` and `show_container` is false;
-* **loading**: `image_handle` is `None` and `show_container` is true;
-* **loaded**: `image_handle` is `Some(...)` and `show_container` is true.
+* **开始**：`image_handle` 是 `None`，`show_container` 是 false；
+* **加载中**：`image_handle` 是 `None`，`show_container` 是 true；
+* **已加载**：`image_handle` 是 `Some(...)`，`show_container` 是 true。
 
-The app begins in the *start* state.
+应用程序从 *开始* 状态开始。
 
-The app always shows a button that is for loading the `ferris.png` image.
-In the *start* state, the app shows no additional widget.
-In the *loading* state, the app shows the text `Loading...`.
-And in the *loaded* state, the app shows the image.
+应用程序总是显示一个用于加载 `ferris.png` 图像的按钮。
+在 *开始* 状态，应用程序不显示任何额外的控件。
+在 *加载中* 状态，应用程序显示文本 `Loading...`。
+在 *已加载* 状态，应用程序显示图像。
 
 ```rust
 fn view(&self) -> iced::Element<Self::Message> {
@@ -55,7 +56,7 @@ fn view(&self) -> iced::Element<Self::Message> {
 }
 ```
 
-We have two messages for the app:
+我们为应用程序有两个消息：
 
 ```rust
 #[derive(Debug, Clone)]
@@ -65,10 +66,10 @@ enum MyMessage {
 }
 ```
 
-When the button is pressed, the app triggers a `Load` message to load the image.
-And when the image is loaded, the app triggers a `Loaded(...)` message.
+当按钮被按下时，应用程序触发一个 `Load` 消息来加载图像。
+当图像加载时，应用程序触发一个 `Loaded(...)` 消息。
 
-The image will be loaded asynchronously.
+图像将被异步加载。
 
 ```rust
 fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
@@ -91,7 +92,7 @@ fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
 }
 ```
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -173,18 +174,16 @@ impl Application for MyApp {
 }
 ```
 
-State of *start*:
+*开始* 状态：
 
-![Loading Images Asynchronously 1](./pic/loading_images_asynchronously_1.png)
+![异步加载图像 1](./pic/loading_images_asynchronously_1.png)
 
-State of *loading*:
+*加载中* 状态：
 
-![Loading Images Asynchronously 2](./pic/loading_images_asynchronously_2.png)
+![异步加载图像 2](./pic/loading_images_asynchronously_2.png)
 
-State of *loaded*:
+*已加载* 状态：
 
-![Loading Images Asynchronously 3](./pic/loading_images_asynchronously_3.png)
+![异步加载图像 3](./pic/loading_images_asynchronously_3.png)
 
-<!-- :arrow_right:  Next:  -->
-
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
