@@ -1,6 +1,7 @@
-# Updating Widgets From Outside
 
-Consider that our widget has an internal state:
+# 从外部更新控件
+
+设想我们的控件有一个内部状态：
 
 ```rust
 struct MyWidget {
@@ -8,7 +9,7 @@ struct MyWidget {
 }
 ```
 
-We use the `highlight` variable to change the color of our widget in the [draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) method.
+我们使用 `highlight` 变量在 [draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) 方法中改变控件的颜色。
 
 ```rust
 fn draw(
@@ -40,9 +41,9 @@ fn draw(
 }
 ```
 
-We would like to control the `highlight` variable from our app.
+我们希望从应用程序中控制 `highlight` 变量。
 
-To do so, we make `MyWidget` to accept the `highlight` variable when the widget is constructed.
+为此，我们让 `MyWidget` 在构造时接受 `highlight` 变量。
 
 ```rust
 impl MyWidget {
@@ -52,7 +53,7 @@ impl MyWidget {
 }
 ```
 
-Then, we initialize `MyWidget` in the [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) method of [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) with an input value for the `highlight` variable.
+然后，我们在 [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) 的 [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) 方法中初始化 `MyWidget`，并为 `highlight` 变量提供一个输入值。
 
 ```rust
 struct MyApp {
@@ -74,9 +75,9 @@ impl Sandbox for MyApp {
 }
 ```
 
-In this example, we control the `highlight` variable by a checkbox.
+在这个例子中，我们通过一个复选框来控制 `highlight` 变量。
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -205,14 +206,14 @@ where
 }
 ```
 
-When `highlight` is false:
+当 `highlight` 为 `false` 时：
 
-![Updating Widgets From Outside 1](./pic/updating_widgets_from_outside_1.png)
+![从外部更新控件 1](./pic/updating_widgets_from_outside_1.png)
 
-When `highlight` is true:
+当 `highlight` 为 `true` 时：
 
-![Updating Widgets From Outside 2](./pic/updating_widgets_from_outside_2.png)
+![从外部更新控件 2](./pic/updating_widgets_from_outside_2.png)
 
-:arrow_right:  Next: [Updating Widgets From Events](./updating_widgets_from_events.md)
+:arrow_right: 下一步：[从事件中更新控件](./updating_widgets_from_events.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
