@@ -1,8 +1,9 @@
-# Texts In Widgets
 
-In addition to draw a [Quad](https://docs.rs/iced/latest/iced/advanced/renderer/struct.Quad.html), we can also draw texts in our widgets.
+# 控件中的文字
 
-For example, suppose we would like to draw a string slice named `CONTENT`.
+除了绘制 [Quad](https://docs.rs/iced/latest/iced/advanced/renderer/struct.Quad.html)，我们还可以在我们的控件中绘制文字。
+
+例如，假设我们想要绘制一个名为 `CONTENT` 的字符串切片。
 
 ```rust
 struct MyWidgetWithText;
@@ -16,7 +17,7 @@ impl MyWidgetWithText {
 }
 ```
 
-We use the [Renderer](https://docs.rs/iced/latest/iced/advanced/text/trait.Renderer.html)'s [fill_text](https://docs.rs/iced/latest/iced/advanced/text/trait.Renderer.html#tymethod.fill_text) method to draw the text.
+我们使用 [Renderer](https://docs.rs/iced/latest/iced/advanced/text/trait.Renderer.html) 的 [fill_text](https://docs.rs/iced/latest/iced/advanced/text/trait.Renderer.html#tymethod.fill_text) 方法来绘制文字。
 
 ```rust
 fn draw(
@@ -51,8 +52,8 @@ fn draw(
 }
 ```
 
-The [fill_text](https://docs.rs/iced/latest/iced/advanced/text/trait.Renderer.html#tymethod.fill_text) method needs the `Renderer` type to implement [iced::advanced::text::Renderer](https://docs.rs/iced/latest/iced/advanced/text/trait.Renderer.html).
-Thus we have to require this in our [Widget](https://docs.rs/iced/latest/iced/advanced/widget/trait.Widget.html) implementation.
+[fill_text](https://docs.rs/iced/latest/iced/advanced/text/trait.Renderer.html#tymethod.fill_text) 方法需要 `Renderer` 类型实现 [iced::advanced::text::Renderer](https://docs.rs/iced/latest/iced/advanced/text/trait.Renderer.html)。
+因此，我们需要在控件实现中增加这个要求。
 
 ```rust
 impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidgetWithText
@@ -60,7 +61,7 @@ where
     Renderer: iced::advanced::Renderer + iced::advanced::text::Renderer,
 ```
 
-Since the requirement of the `Renderer` type is changed, we have to change the requirement in `From<MyWidgetWithText>` for [Element](https://docs.rs/iced/latest/iced/type.Element.html), too.
+由于 `Renderer` 类型的要求发生了变化，我们也需要在 `From<MyWidgetWithText>` 转换为 [Element](https://docs.rs/iced/latest/iced/type.Element.html) 时改变要求。
 
 ```rust
 impl<'a, Message, Renderer> From<MyWidgetWithText> for Element<'a, Message, Theme, Renderer>
@@ -68,7 +69,7 @@ where
     Renderer: iced::advanced::Renderer + iced::advanced::text::Renderer,
 ```
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -198,8 +199,8 @@ where
 }
 ```
 
-![Texts In Widgets](./pic/texts_in_widgets.png)
+![控件中的文字](./pic/texts_in_widgets.png)
 
-:arrow_right:  Next: [Custom Background](./custom_background.md)
+:arrow_right: 下一步：[自定义背景](./custom_background.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
