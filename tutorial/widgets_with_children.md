@@ -1,9 +1,10 @@
-# Widgets With Children
 
-A custom widget can contain another custom widget.
+# 带有子控件的控件
 
-In the following example, we have a `MyWidgetOuter` that contains a `MyWidgetInner`.
-The `MyWidgetInner`, which is the same as before, is a simple rectangle.
+自定义控件可以包含另一个自定义控件。
+
+在以下示例中，我们有一个 `MyWidgetOuter` 包含了一个 `MyWidgetInner`。
+`MyWidgetInner` 与之前相同，是一个简单的矩形。
 
 ```rust
 struct MyWidgetInner;
@@ -17,13 +18,13 @@ where
 
 impl<'a, Message, Renderer> From<MyWidgetInner> for Element<'a, Message, Theme, Renderer>
 where
-    Renderer: iced::advanced::Renderer,
+Renderer: iced::advanced::Renderer,
 {
     // ...
 }
 ```
 
-The `MyWidgetOuter` contains `MyWidgetInner`.
+`MyWidgetOuter` 包含 `MyWidgetInner`。
 
 ```rust
 struct MyWidgetOuter {
@@ -39,7 +40,7 @@ impl MyWidgetOuter {
 }
 ```
 
-In the [draw](https://docs.rs/iced/12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) method of `MyWidgetOuter`, we draw the `MyWidgetInner` as well.
+在 `MyWidgetOuter` 的 [draw](https://docs.rs/iced/12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) 方法中，我们也绘制 `MyWidgetInner`。
 
 ```rust
 fn draw(
@@ -75,12 +76,12 @@ fn draw(
 }
 ```
 
-When drawing the `MyWidgetInner` in `MyWidgetOuter`, we need to pass the layout of the `MyWidgetInner`.
-This layout information can be obtained by `layout.children().next().unwrap()`.
-[layout.children()](https://docs.rs/iced/0.12.1/iced/advanced/struct.Layout.html#method.children) is an [Iterator](https://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html) that stores all the child layouts of `MyWidgetOuter`.
+在 `MyWidgetOuter` 中绘制 `MyWidgetInner` 时，我们需要传递 `MyWidgetInner` 的布局。
+这个布局信息可以通过 `layout.children().next().unwrap()` 获得。
+[layout.children()](https://docs.rs/iced/0.12.1/iced/advanced/struct.Layout.html#method.children) 是一个 [Iterator](https://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html)，存储了 `MyWidgetOuter` 的所有子布局。
 
-To make the underlying system aware of the child layouts of `MyWidgetOuter`, we have to explicitly tell the system in the [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout) method.
-Otherwise, the [layout.children()](https://docs.rs/iced/0.12.1/iced/advanced/struct.Layout.html#method.children) in the [draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) method will be empty.
+为了使底层系统了解 `MyWidgetOuter` 的子布局，我们必须在 [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout) 方法中明确告诉系统。
+否则，[draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) 方法中的 [layout.children()](https://docs.rs/iced/0.12.1/iced/advanced/struct.Layout.html#method.children) 将为空。
 
 ```rust
 fn layout(&self, tree: &mut Tree, renderer: &Renderer, limits: &layout::Limits) -> layout::Node {
@@ -95,9 +96,9 @@ fn layout(&self, tree: &mut Tree, renderer: &Renderer, limits: &layout::Limits) 
 }
 ```
 
-We use the [Node::with_children](https://docs.rs/iced/0.12.1/iced/advanced/layout/struct.Node.html#method.with_children) function to bind the parent layout and its child layouts.
+我们使用 [Node::with_children](https://docs.rs/iced/0.12.1/iced/advanced/layout/struct.Node.html#method.with_children) 函数将父布局和子布局绑定在一起。
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -281,10 +282,10 @@ where
 }
 ```
 
-![Widgets With Children](./pic/widgets_with_children.png)
+![带有子控件的控件](./pic/widgets_with_children.png)
 
-If `MyWidgetInner` receives events (i.e., implementing [on_event](https://docs.rs/iced/latest/iced/advanced/trait.Widget.html#method.on_event)), we have to call this [on_event](https://docs.rs/iced/latest/iced/advanced/trait.Widget.html#method.on_event) method from `MyWidgetOuter`'s [on_event](https://docs.rs/iced/latest/iced/advanced/trait.Widget.html#method.on_event) method.
-This ensures the [Event](https://docs.rs/iced/latest/iced/enum.Event.html) is passing from `MyWidgetOuter` to `MyWidgetInner`.
+如果 `MyWidgetInner` 接收事件（即，实现 [on_event](https://docs.rs/iced/latest/iced/advanced/trait.Widget.html#method.on_event)），我们必须从 `MyWidgetOuter` 的 [on_event](https://docs.rs/iced/latest/iced/advanced/trait.Widget.html#method.on_event) 方法中调用这个 [on_event](https://docs.rs/iced/latest/iced/advanced/trait.Widget.html#method.on_event) 方法。
+这确保了 [Event](https://docs.rs/iced/latest/iced/enum.Event.html) 从 `MyWidgetOuter` 传递到 `MyWidgetInner`。
 
 ```rust
 fn on_event(
@@ -313,6 +314,6 @@ fn on_event(
 }
 ```
 
-:arrow_right:  Next: [Taking Any Children](./taking_any_children.md)
+:arrow_right: 下一步：[接收任意子控件](./taking_any_children.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
