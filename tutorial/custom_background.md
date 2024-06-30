@@ -1,16 +1,17 @@
-# Custom Background
 
-We can also draw an image on a [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html).
+# 自定义背景
 
-Similar to the [Image](https://docs.rs/iced/0.12.1/iced/widget/image/struct.Image.html) widget, we have to enable the [image](https://docs.rs/crate/iced/latest/features#image) feature.
+我们也可以在 [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) 上绘制图像。
+
+与 [Image](https://docs.rs/iced/0.12.1/iced/widget/image/struct.Image.html) 控件类似，我们需要启用 [image](https://docs.rs/crate/iced/latest/features#image) 特性。
 
 ```toml
 [dependencies]
 iced = { version = "0.12.1", features = ["image", "advanced"] }
 ```
 
-Assume we have an image, named `ferris.png`,  in the Cargo root directory.
-We load this image when we initialize our widget.
+假设我们在 Cargo 根目录下有一个名为 `ferris.png` 的图像。
+我们在初始化控件时加载这个图像。
 
 ```rust
 struct MyWidgetWithImage {
@@ -26,7 +27,7 @@ impl MyWidgetWithImage {
 }
 ```
 
-Then, we use the [iced::widget::image::layout](https://docs.rs/iced/0.12.1/iced/widget/image/fn.layout.html) function to determine the [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout) of our widget.
+然后，我们使用 [iced::widget::image::layout](https://docs.rs/iced/0.12.1/iced/widget/image/fn.layout.html) 函数来确定我们控件的 [layout](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.layout)。
 
 ```rust
 fn layout(&self, _tree: &mut Tree, renderer: &Renderer, limits: &layout::Limits) -> layout::Node {
@@ -41,7 +42,7 @@ fn layout(&self, _tree: &mut Tree, renderer: &Renderer, limits: &layout::Limits)
 }
 ```
 
-And we draw the image by the [iced::widget::image::draw](https://docs.rs/iced/0.12.1/iced/widget/image/fn.draw.html) function.
+我们通过 [iced::widget::image::draw](https://docs.rs/iced/0.12.1/iced/widget/image/fn.draw.html) 函数绘制图像。
 
 ```rust
 fn draw(
@@ -66,7 +67,7 @@ fn draw(
 }
 ```
 
-Both functions require the `Renderer` to implement [iced::advanced::image::Renderer](https://docs.rs/iced/0.12.1/iced/advanced/image/trait.Renderer.html).
+这两个函数都需要 `Renderer` 实现 [iced::advanced::image::Renderer](https://docs.rs/iced/0.12.1/iced/advanced/image/trait.Renderer.html)。
 
 ```rust
 impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidgetWithImage
@@ -74,7 +75,7 @@ where
     Renderer: iced::advanced::Renderer + iced::advanced::image::Renderer<Handle = Handle>,
 ```
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -199,8 +200,8 @@ where
 }
 ```
 
-![Custom Background](./pic/custom_background.png)
+![自定义背景](./pic/custom_background.png)
 
-:arrow_right:  Next: [Widgets With Children](./widgets_with_children.md)
+:arrow_right: 下一步：[带有子控件的控件](./widgets_with_children.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
