@@ -1,6 +1,7 @@
-# Mouse Pointer Over Widgets
 
-To change the mouse pointer based on the requirement of our widgets, we can use the [mouse_interaction](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#method.mouse_interaction) method of [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html).
+# 鼠标指针悬停在控件上
+
+根据我们控件的需求更改鼠标指针，我们可以使用 [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) 的 [mouse_interaction](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#method.mouse_interaction) 方法。
 
 ```rust
 fn mouse_interaction(
@@ -19,10 +20,10 @@ fn mouse_interaction(
 }
 ```
 
-The method returns [Interaction](https://docs.rs/iced/0.12.1/iced/mouse/enum.Interaction.html), which specifies the type of the mouse pointer.
-In our example, we specify [Interaction::Pointer](https://docs.rs/iced/0.12.1/iced/mouse/enum.Interaction.html#variant.Pointer) when the mouse is over the widget.
+该方法返回 [Interaction](https://docs.rs/iced/0.12.1/iced/mouse/enum.Interaction.html)，它指定了鼠标指针的类型。
+在我们的示例中，当鼠标悬停在控件上时，我们指定 [Interaction::Pointer](https://docs.rs/iced/0.12.1/iced/mouse/enum.Interaction.html#variant.Pointer)。
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -137,8 +138,8 @@ where
 }
 ```
 
-![Mouse Pointer Over Widgets](./pic/mouse_pointer_over_widgets.png)
+![鼠标指针悬停在控件上](./pic/mouse_pointer_over_widgets.png)
 
-:arrow_right:  Next: [Texts In Widgets](./texts_in_widgets.md)
+:arrow_right: 下一步：[控件中的文字](./texts_in_widgets.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
