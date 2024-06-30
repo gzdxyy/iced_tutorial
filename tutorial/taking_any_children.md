@@ -1,8 +1,9 @@
-# Taking Any Children
 
-Since all [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) can be transformed to [Element](https://docs.rs/iced_core/0.12.1/iced_core/struct.Element.html), our custom widget is able to take any [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) as its children.
+# 接收任意子控件
 
-This time, our `MyWidgetOuter` will take an [Element](https://docs.rs/iced_core/0.12.1/iced_core/struct.Element.html) as its inner widget when it is initialized.
+由于所有的 [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) 都可以转换为 [Element](https://docs.rs/iced_core/0.12.1/iced_core/struct.Element.html)，我们的自定义控件能够接收任意的 [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) 作为其子控件。
+
+这次，我们的 `MyWidgetOuter` 在初始化时将接收一个 [Element](https://docs.rs/iced_core/0.12.1/iced_core/struct.Element.html) 作为其内部控件。
 
 ```rust
 struct MyWidgetOuter<'a, Message, Renderer> {
@@ -19,9 +20,9 @@ where
 }
 ```
 
-When we draw or layout the `inner_widget`, we will use its methods from [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html).
-Yet, the `inner_widget` is of type [Element](https://docs.rs/iced_core/0.12.1/iced_core/struct.Element.html).
-So, we have to cast it as [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) by the [as_widget](https://docs.rs/iced_core/0.12.1/iced_core/struct.Element.html#method.as_widget) method.
+在绘制或布局 `inner_widget` 时，我们将使用其 [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) 的方法。
+然而，`inner_widget` 的类型是 [Element](https://docs.rs/iced_core/0.12.1/iced_core/struct.Element.html)。
+因此，我们必须通过 [as_widget](https://docs.rs/iced_core/0.12.1/iced_core/struct.Element.html#method.as_widget) 方法将其转换为 [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html)。
 
 ```rust
 fn layout(
@@ -43,10 +44,10 @@ fn layout(
 }
 ```
 
-In the code above, we make the size of `MyWidgetOuter` relative to its `inner_widget`.
-More precisely, we retrieve the size of `inner_widget` and [pad](https://docs.rs/iced_core/0.12.1/iced_core/struct.Size.html#method.pad) the size as the size of `MyWidgetOuter`.
+在上述代码中，我们使 `MyWidgetOuter` 的大小相对于其 `inner_widget`。
+更准确地说，我们获取 `inner_widget` 的大小并使用 [pad](https://docs.rs/iced_core/0.12.1/iced_core/struct.Size.html#method.pad) 方法将大小设置为 `MyWidgetOuter` 的大小。
 
-Then, in the [draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) method of `MyWidgetOuter`, we also draw the `inner_widget`.
+然后，在 `MyWidgetOuter` 的 [draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) 方法中，我们也绘制 `inner_widget`。
 
 ```rust
 fn draw(
@@ -84,10 +85,10 @@ fn draw(
 }
 ```
 
-Note that we have to pass the child state `&state.children[0]` to `inner_widget` since the anonymous widget may need the information about its state.
+请注意，我们必须将子状态 `&state.children[0]` 传递给 `inner_widget`，因为匿名控件可能需要其状态信息。
 
-To make the underlying system aware of the child state, we have to explicitly tell the system the existence of the child.
-Otherwise, `state.children` in [draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) will be empty.
+为了使底层系统了解子状态的存在，我们必须明确告诉系统子状态的存在。
+否则，[draw](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html#tymethod.draw) 中的 `state.children` 将为空。
 
 ```rust
 fn children(&self) -> Vec<Tree> {
@@ -99,7 +100,7 @@ fn diff(&self, tree: &mut Tree) {
 }
 ```
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -239,8 +240,8 @@ where
 }
 ```
 
-![Taking Any Children](./pic/taking_any_children.png)
+![接收任意子控件](./pic/taking_any_children.png)
 
-:arrow_right:  Next: [Loading Images Asynchronously](./loading_images_asynchronously.md)
+:arrow_right: 下一步：[异步加载图像](./loading_images_asynchronously.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
