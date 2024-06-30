@@ -1,8 +1,9 @@
-# Producing Widget Messages
 
-Our custom widgets are able to send [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message).
+# 生成控件消息
 
-To do so, we need to store the [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message) we are going to send in the widget.
+我们的自定义控件能够发送 [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message)。
+
+为此，我们需要在控件中存储将要发送的 [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message)。
 
 ```rust
 struct MyWidget<Message> {
@@ -16,9 +17,9 @@ impl<Message> MyWidget<Message> {
 }
 ```
 
-We use a generic type `Message` for `MyWidget`, so that the sent `pressed_message` in `MyWidget` will match the associated type [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message) of [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html).
+我们为 `MyWidget` 使用了一个泛型 `Message`，这样 `MyWidget` 中发送的 `pressed_message` 将与 [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) 的关联类型 [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message) 匹配。
 
-The message `pressed_message` will be sent when the widget is pressed.
+当控件被按下时，将发送消息 `pressed_message`。
 
 ```rust
 fn on_event(
@@ -46,10 +47,10 @@ fn on_event(
 }
 ```
 
-We use `shell.publish(self.pressed_message.clone())` to send `pressed_message` to our app.
-To ensure the mouse pressed event happens within the range of the widget, we use `cursor.is_over(layout.bounds())` to check the mouse position and match the `event` to `Event::Mouse(mouse::Event::ButtonPressed(_))` to check the mouse button state.
+我们使用 `shell.publish(self.pressed_message.clone())` 将 `pressed_message` 发送到我们的应用程序。
+为确保鼠标按下事件发生在控件的范围内，我们使用 `cursor.is_over(layout.bounds())` 检查鼠标位置，并匹配 `event` 到 `Event::Mouse(mouse::Event::ButtonPressed(_))` 检查鼠标按钮状态。
 
-Finally, we pass our [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message) to the widget.
+最后，我们将我们的消息 [Message](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#associatedtype.Message) 传递给控件。
 
 ```rust
 #[derive(Debug, Clone)]
@@ -77,7 +78,7 @@ impl Sandbox for MyApp {
 }
 ```
 
-The full code is as follows:
+完整代码如下：
 
 ```rust
 use iced::{
@@ -227,8 +228,8 @@ where
 }
 ```
 
-![Producing Widget Messages](./pic/producing_widget_messages.png)
+![生成控件消息](./pic/producing_widget_messages.png)
 
-:arrow_right:  Next: [Mouse Pointer Over Widgets](./mouse_pointer_over_widgets.md)
+:arrow_right: 下一步：[鼠标指针悬停在控件上](./mouse_pointer_over_widgets.md)
 
-:blue_book: Back: [Table of contents](./../README.md)
+:blue_book: 返回：[目录](./../README.md)
